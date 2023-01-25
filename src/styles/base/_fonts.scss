@@ -1,0 +1,22 @@
+// CSS variables for the fonts / colors
+:root {
+  // Dark color
+  --bg-dark: #10141e;
+  --bg-dark-nav: #161d2f;
+  --text-light: #ffffff;
+
+  // Light color
+}
+
+.title {
+  font-weight: 300;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.3125px;
+}
+
+.trending-title {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 19px;
+}

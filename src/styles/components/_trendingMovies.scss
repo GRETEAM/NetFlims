@@ -1,0 +1,50 @@
+.swiper {
+  &-slide {
+    position: relative;
+    min-width: 24rem;
+
+    img {
+      width: -webkit-fill-available;
+      height: 14rem;
+      border-radius: 8px;
+    }
+  }
+}
+
+.slider {
+  &-content-text {
+    position: absolute;
+    bottom: 0rem;
+    left: 0rem;
+    right: 0;
+    padding: 0 0 1.6rem 1.6rem;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.0001) 0%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+    border-radius: 0 0 0.8rem 0.8rem;
+
+    .infos {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 300;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      opacity: 0.75;
+      margin-bottom: 0.4rem;
+
+      &-circle {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background-color: #ffffff;
+      }
+
+      &-movie::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+:root {
+  font-size: 10px;
+  font-family: "Outfit", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.container {
+  width: min(100% - 3.2rem, 111rem);
+  margin-inline: auto;
+}
