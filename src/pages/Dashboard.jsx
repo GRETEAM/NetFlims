@@ -1,5 +1,4 @@
-import Loader from "../components/Loader";
-import Movies from "../components/Movies";
+import TrendingMovies from "../components/TrendingMovies";
 import useFetch from "../hooks/useFetch";
 
 const Dashboard = () => {
@@ -12,13 +11,11 @@ const Dashboard = () => {
     <main className="container">
       <section className="trending">
         <h1 className="title">Trending</h1>
-        <p>Carousel</p>
       </section>
-      <section className="recommend">
-        {loading ? <Loader /> : <Movies movies={data.results} />}
-      </section>
+      
+        <TrendingMovies loading={loading} movies={data.results} />
     </main>
   );
-}
+};
  
 export default Dashboard;
