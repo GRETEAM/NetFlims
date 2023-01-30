@@ -8,8 +8,6 @@ const TrendingMovies = ({ loading, movies }) => {
     <section className="recommend">
     {loading ? <Loader /> : (
       <Swiper
-        slidesPerView={2}
-        spaceBetween={16}
         className="slider"
       >
         {movies.map(movie => {
@@ -18,7 +16,7 @@ const TrendingMovies = ({ loading, movies }) => {
               <img
                 className="slider-content-img"
                 src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-                alt={movie.title}
+                alt={movie.title || movie.name}
               />
               <div className="slider-content-text">
                 <div className="infos">
