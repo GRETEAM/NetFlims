@@ -26,7 +26,7 @@ const TrendingMovies = ({ loading, movies }) => {
                   <span className="infos-circle"></span>
                   <p className="infos-movie">{movie.media_type}</p>
                 </div>
-                <h2 className="trending-title">{movie.original_title}</h2>
+                <h2 className="trending-title">{movie.original_title || movie.name}</h2>
               </div>
             </SwiperSlide>
           );
