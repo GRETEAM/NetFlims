@@ -19,12 +19,14 @@ const TrendingMovies = ({ loading, movies }) => {
                 alt={movie.title || movie.name}
               />
               <div className="slider-content-text">
-                <div className="infos">
-                  <p>{moment(movie.release_date).format('YYYY')}</p>
+                <div className="infos trending-title-infos">
+                  <p>{moment(movie.release_date).format("YYYY")}</p>
                   <span className="infos-circle"></span>
-                  <p className="infos-movie">{movie.media_type}</p>
+                  <p className="infos-movie trending-title-infos">{movie.media_type}</p>
                 </div>
-                <h2 className="trending-title">{movie.original_title || movie.name}</h2>
+                <h2 className="trending-title">
+                  {movie.original_title || movie.name}
+                </h2>
               </div>
             </SwiperSlide>
           );

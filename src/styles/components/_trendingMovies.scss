@@ -1,12 +1,33 @@
+@use "../base/mixins" as *;
+
+// Nom de la section du carousel
+.recommend {
+  margin-top: 1.6rem;
+
+  @include mq(tablet) {
+    margin-top: 2.5rem;
+  }
+}
+
 .swiper {
   &-slide {
     position: relative;
-    min-width: 24rem;
+    max-width: 24rem;
+    margin-right: 2.4rem;
+
+    @include mq(tablet) {
+      margin-right: 4rem;
+      max-width: 47rem;
+    }
 
     img {
       width: -webkit-fill-available;
       height: 14rem;
       border-radius: 8px;
+
+      @include mq(tablet) {
+        height: 23rem;
+      }
     }
   }
 }
@@ -25,14 +46,14 @@
     );
     border-radius: 0 0 0.8rem 0.8rem;
 
+    @include mq(tablet) {
+      padding: 0 0 2.4rem 2.4rem;
+    }
+
     .infos {
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      font-weight: 300;
-      font-size: 1.2rem;
-      line-height: 1.5rem;
-      opacity: 0.75;
       margin-bottom: 0.4rem;
 
       &-circle {
