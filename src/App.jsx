@@ -1,15 +1,17 @@
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
-import Store from "./Store";
+import Movies from "./pages/Movies";
+import store from "./Store";
 
 const App = () => {
 
   return (
-    <Provider store={Store}>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Dashboard />} />
+          <Route path='/movies' element={<Movies />} /> 
         </Routes>
       </BrowserRouter>
     </Provider>
