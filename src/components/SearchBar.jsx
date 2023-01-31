@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 
-const SearchBar = ({filter}) => {
+const SearchBar = ({filter,placeholder}) => {
     
   return (
-    <div>
-        <input type="text" className='input' onChange={(e) => filter(e)} />
+    <div className='search_container'>
+        <img src="/Search.svg" alt="" className='search_image' />
+        <input type="text" className='searchbar_input' onChange={(e) => filter(e)} placeholder={placeholder} />
     </div>
   )
 }
