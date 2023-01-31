@@ -1,11 +1,21 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchData } from '../actions/actionMovies';
 
 const Movies = () => {
-    const Movies =useSelector((store)=>{return store.reducerMovies})
-    console.log(Movies);
+   const dispatch = useDispatch();
+
+    useEffect(() => {
+        const loadMovies = async () => {
+            await dispatch(fetchData());
+        };
+        loadMovies();
+    }, [dispatch]);
+
+    const movies = useSelector(store => store.reducerMovies);
+    console.log(movies);
     return (
         <div>Movies</div>
     )
 }
-export default Movies
+export default Movies;
