@@ -3,9 +3,12 @@
 // Nom de la section du carousel
 .recommend {
   margin-top: 1.6rem;
+  height: 13rem;
+  position: relative;
 
   @include mq(tablet) {
     margin-top: 2.5rem;
+    height: 23rem;
   }
 }
 
@@ -22,12 +25,7 @@
 
     img {
       width: -webkit-fill-available;
-      height: 14rem;
       border-radius: 8px;
-
-      @include mq(tablet) {
-        height: 23rem;
-      }
     }
   }
 }
