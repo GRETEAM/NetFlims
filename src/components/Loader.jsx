@@ -1,9 +1,9 @@
 const Loader = () => {
   return (
-    <>
+    <div className="loading">
       <h3>Loading...</h3>
-      <p>Please wait...</p>
-    </>
+      <span></span>
+    </div>
   );
 };
  

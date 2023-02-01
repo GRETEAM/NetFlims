@@ -1,13 +1,17 @@
 // == BASE CSS == //
 @use "./base/reset";
 @use "./base/fonts";
+@use "./base/mixins";
 @use "./base/base";
 
 // == LAYOUT == //
 
 // == COMPONENTS == //
+@use "./components/loader";
 @use "./components/trendingMovies";
 @use "./components/SearchBar";
+@use "./components/movies";
+
 
 // == PAGES == //
 @use "./pages/dashboard";

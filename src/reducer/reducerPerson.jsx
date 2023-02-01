@@ -4,7 +4,7 @@ const initialState = {
     data: DATA
 };
 
-export const reducerSeries = (state = initialState, action) => {
+export const reducerPerson = (state = initialState, action) => {
     switch (action.type) {
         case 'FETCH_DATA': 
             return { ...state, data: action.data }

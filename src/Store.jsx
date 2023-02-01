@@ -1,6 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit"
-import { reducerSeries } from "./reducer/reducerSeries"
-import { reducerMovies } from "./reducer/reducerMovies"
+import { configureStore } from "@reduxjs/toolkit";
+import { reducerMovies } from "./reducer/reducerMovies";
+import { reducerSeries } from "./reducer/reducerSeries";
+import { reducerPerson } from "./reducer/reducerPerson";
 
-const Store = configureStore({reducer:{reducerSeries,reducerMovies}})
-export default Store
+const store = configureStore({reducer: {
+  reducerSeries, reducerMovies, reducerPerson
+ 
+}});
+
+export default store;
