@@ -10,7 +10,7 @@ const TrendingMovies = ({ loading, movies }) => {
       <Swiper
         className="slider"
       >
-        {movies.map(movie => {
+        {movies?.map(movie => {
           return (
             <SwiperSlide className="slider-content" key={movie.id}>
               <img
