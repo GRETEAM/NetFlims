@@ -1,0 +1,23 @@
+.navbar {
+  background-color: var(--bg-dark-nav);
+  padding: 1.6rem 0;
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    width: 2.5rem;
+  }
+
+  &-links {
+    display: flex;
+    gap: 2.4rem;
+  }
+
+  &-profil {
+    width: 2.4rem;
+  }
+}

@@ -11,6 +11,7 @@ const TrendingMovies = ({ loading, movies }) => {
         className="slider"
       >
         {movies.map(movie => {
+          {console.log(movie)}
           return (
             <SwiperSlide className="slider-content" key={movie.id}>
               <img
