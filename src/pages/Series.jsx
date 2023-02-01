@@ -30,7 +30,7 @@ const Series = () => {
         ) : (
           data.map((serie) => {
             if (serie.media_type === "tv") {
-              return <Card data={serie} />;
+              return <Card data={serie}  key={serie.id}  />;
             }
           })
         )}

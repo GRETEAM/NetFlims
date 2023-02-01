@@ -26,7 +26,7 @@ const Movies = () => {
         ) : (
           data.map((movie) => {
             if (movie.media_type === "movie") {
-              return <Card data={movie} />;
+              return <Card data={movie} key={movie.id} />;
             }
           })
         )}
