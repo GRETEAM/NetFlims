@@ -10,6 +10,9 @@
 // == COMPONENTS == //
 @use "./components/loader";
 @use "./components/trendingMovies";
+@use "./components/SearchBar";
+@use "./components/movies";
+
 
 // == PAGES == //
 @use "./pages/dashboard";
