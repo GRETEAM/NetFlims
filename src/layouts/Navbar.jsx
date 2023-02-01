@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <section className="navbar">
-      <nav className="navbar-container container">
+      <nav className="navbar-container nav-container">
         <img src={logo} alt="" className="navbar-logo" />
         <div className="navbar-links">
           <NavLink style={({ isActive }) => isActive ? activeStyle : undefined } to="/">
