@@ -5,11 +5,15 @@
 @use "./base/base";
 
 // == LAYOUT == //
+@use "./layouts/navbar";
 
 // == COMPONENTS == //
 @use "./components/loader";
 @use "./components/trendingMovies";
+@use "./components/SearchBar";
+
 
 // == PAGES == //
 @use "./pages/dashboard";
+@use "./pages/details";
 @use "./pages/card";

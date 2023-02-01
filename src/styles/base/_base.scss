@@ -1,3 +1,5 @@
+@use "./mixins" as *;
+
 :root {
   font-size: 10px;
   font-family: "Outfit", sans-serif;
@@ -6,6 +8,15 @@
 }
 
 .container {
-  width: min(100% - 3.2rem, 111rem);
+  width: min(100% - 3.2rem, 124rem);
   margin-inline: auto;
+}
+
+.nav-container {
+  width: min(100% - 0rem, 124rem);
+  margin-inline: auto;
+
+  @include mq(tablet) {
+    width: min(100% - 5rem, 124rem);
+  }
 }
