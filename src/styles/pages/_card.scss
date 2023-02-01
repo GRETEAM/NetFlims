@@ -1,0 +1,10 @@
+@use "../base/mixins" as *;
+
+.card {
+    width: 220px;
+    &-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4rem;
+    }
+}
