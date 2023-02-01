@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./layouts/Navbar";
 import Bookmark from "./pages/Bookmark";
 import Dashboard from './pages/Dashboard';
+import Details from "./pages/Details";
 import Movies from "./pages/Movies";
 import Person from "./pages/Person";
 import Series from "./pages/Series";
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/series' element={<Series />} /> 
           <Route path='/bookmark' element={<Bookmark />} /> 
           <Route path='/person' element={<Person />} /> 
+          <Route path='/:detail' element={<Details/>} /> 
         </Routes>
       </BrowserRouter>
     </Provider>
