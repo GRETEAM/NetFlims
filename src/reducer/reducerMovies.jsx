@@ -8,13 +8,14 @@ const initialState = [];
 export const reducerMovies = (state = initialState, action) => {
     const cloneState = _.cloneDeep(state);
     switch (action.type) {
-        case "FETCH_TEST":
+        case "INIT_MOVIES":
+            return action.movies
+        case "FETCH_SCROLL":
             console.log(action.movies[0].title) 
-            return cloneState.concat(action.movies)
-        // case "FETCH_DATA":
-        //     console.log(action.movies[0].title) 
-        //     return cloneState.concat(action.movies)
-   
+            if (cloneState.length > 0){
+                return cloneState.concat(action.movies)
+            }
+            return action.movies
         default:
             return state;
     }

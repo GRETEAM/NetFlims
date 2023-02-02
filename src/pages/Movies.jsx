@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchScroll } from "../actions/actionMovies";
+import { initMovies } from "../actions/initMovies";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
@@ -29,15 +30,13 @@ const Movies = () => {
 
 
   useEffect(() => {
-    dispatch(fetchScroll(pageIndex));
+    dispatch(initMovies());
   }, []);
 
 
   useEffect(() => {
     SetData(movies.data);
   }, [movies]);
-
-  console.log(data);
 
   return (
     <main className="container">
