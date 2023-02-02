@@ -14,25 +14,23 @@ const Movies = () => {
 
   useEffect(() => {
     const infiniteCheck = () => {
-      const { scrollTop, scrollHeight, clientHeight } =
-        document.documentElement;
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
       if (scrollHeight - scrollTop === clientHeight) {
         setPageIndex((pageIndex) => pageIndex + 1);
-        console.log(pageIndex);
-        dispatch(fetchScroll(pageIndex+1));
+        dispatch(fetchScroll(pageIndex + 1));
       }
     };
+
     window.addEventListener("scroll", infiniteCheck);
     return () => {
       window.removeEventListener("scroll", infiniteCheck);
     };
   }, [pageIndex]);
 
-
   useEffect(() => {
     dispatch(initMovies());
   }, []);
-
 
   useEffect(() => {
     SetData(movies.data);

@@ -8,8 +8,8 @@ import { useEffect } from "react";
 const Authentication = ({setSessionStatus}) => {
 
     const supabase = createClient(
-        "https://vdqnrwraaybulbcxpyus.supabase.co",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkcW5yd3JhYXlidWxiY3hweXVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQ5Mjc2MTcsImV4cCI6MTk5MDUwMzYxN30.FGb0DgDMenEMyZQbL5L-WYvLET04QNyU8_vVE0OZekk"
+        import.meta.env.VITE_PROJECT_URL,
+        import.meta.env.VITE_ANON_API_KEY
       );
       useEffect(() => {
         const { data } = supabase.auth.onAuthStateChange(async (event) => {

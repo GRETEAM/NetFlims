@@ -19,8 +19,8 @@ const Navbar = ({setSessionStatus}) => {
   };
   const dispatch = useDispatch()
   const supabase = createClient(
-    "https://vdqnrwraaybulbcxpyus.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkcW5yd3JhYXlidWxiY3hweXVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQ5Mjc2MTcsImV4cCI6MTk5MDUwMzYxN30.FGb0DgDMenEMyZQbL5L-WYvLET04QNyU8_vVE0OZekk"
+    import.meta.env.VITE_PROJECT_URL,
+    import.meta.env.VITE_ANON_API_KEY
   );
   async function signOutUser(){
     const {error} = await supabase.auth.signOut()
