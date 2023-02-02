@@ -5,6 +5,7 @@ import useFetch from "../hooks/useFetch";
 const Details = () => {
   const id = useParams().detail;
   const location = useLocation();
+  console.log(location.state.movie);
   const { loading, error, data } = useFetch(
     `https://api.themoviedb.org/3/${location.state.movie}/${id}?api_key=${
       import.meta.env.VITE_API_KEY

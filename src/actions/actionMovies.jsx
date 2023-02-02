@@ -6,6 +6,6 @@ export const fetchScroll = (pageIndex) => {
     console.log(pageIndex)
     const responseData = await response.json();
     let movies = responseData.results;
-    dispatch({ type: "FETCH_SCROLL", movies });
+    dispatch({ type: "FETCH_MOVIE_SCROLL", movies });
   };
 };

@@ -1,11 +1,13 @@
 import moment from "moment";
 import React from "react";
+import { Link } from "react-router-dom";
 import movies from "../assets/icons/icon-movies.svg";
 import series from "../assets/icons/icon-series.svg";
 
 const Card = ({ data }) => {
   return (
     <div className="card">
+      <Link to={`/${data.id}`} state={{ movie: data.media_type }}>
       <img
         className="card-img"
         src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
@@ -34,6 +36,7 @@ const Card = ({ data }) => {
       <h2 className="card-description-title">
         {data.original_title || data.name}
       </h2>
+      </Link>
     </div>
   );
 };
