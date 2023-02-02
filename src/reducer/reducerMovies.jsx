@@ -1,17 +1,20 @@
+import _ from "lodash";
+
+
 const initialState = [];
 
-// const initialState = {
-//     data: []
-// };
+
 
 export const reducerMovies = (state = initialState, action) => {
+    const cloneState = _.cloneDeep(state);
     switch (action.type) {
-        case 'FETCH_DATA': 
-        console.log(action)
-            // console.log(state)
-            return action.payload ;
-        // case 'FETCH_SCROLL':
-        //     return { ...state, }
+        case "FETCH_TEST":
+            console.log(action.movies[0].title) 
+            return cloneState.concat(action.movies)
+        // case "FETCH_DATA":
+        //     console.log(action.movies[0].title) 
+        //     return cloneState.concat(action.movies)
+   
         default:
             return state;
     }

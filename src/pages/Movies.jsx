@@ -1,47 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../actions/actionMovies";
+import { fetchScroll } from "../actions/actionMovies";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
 const Movies = () => {
-  const [data, SetData] = useState([]);
+  const movies = useSelector((store) => store.reducerMovies);
   const dispatch = useDispatch();
+
+  const [data, SetData] = useState([]);
   const [pageIndex, setPageIndex] = useState(1);
-  
+
   useEffect(() => {
     const infiniteCheck = () => {
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
       if (scrollHeight - scrollTop === clientHeight) {
-        setPageIndex(pageIndex + 1);
-        console.log("Index de la page :", pageIndex);
-        console.log("Index de la page :", setPageIndex);
+        setPageIndex((pageIndex) => pageIndex + 1);
+        console.log(pageIndex);
+        dispatch(fetchScroll(pageIndex+1));
       }
     };
     window.addEventListener("scroll", infiniteCheck);
-
     return () => {
       window.removeEventListener("scroll", infiniteCheck);
     };
-  }, []);
-  // console.log(data);
-  console.log(pageIndex);
+  }, [pageIndex]);
+
 
   useEffect(() => {
-    const loadMovies = async () => {
-      await dispatch(fetchData(pageIndex));
-    };
-
-    loadMovies();
-    
+    dispatch(fetchScroll(pageIndex));
   }, []);
 
-  const movies = useSelector((store) => store.reducerMovies);
-  // useEffect(() => {
-  //   SetData(movies.data);
-  // }, [movies]);
-  console.log(movies);
+
+  useEffect(() => {
+    SetData(movies.data);
+  }, [movies]);
+
+  console.log(data);
 
   return (
     <main className="container">

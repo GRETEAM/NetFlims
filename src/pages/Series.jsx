@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
-import { fetchData } from "../actions/actionMovies";
+import {  fetchScroll } from "../actions/actionMovies";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
@@ -14,7 +14,7 @@ const Series = () => {
 
   useEffect(() => {
     const loadSeries = async () => {
-      await dispatch(fetchData(pageIndex));
+      await dispatch(fetchScroll(pageIndex));
     };
     
     loadSeries();
