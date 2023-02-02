@@ -4,18 +4,21 @@ import TrendingMovies from "../components/TrendingMovies";
 import useFetch from "../hooks/useFetch";
 
 const Dashboard = () => {
-
+  
   const { loading, error, data } = useFetch(
     `https://api.themoviedb.org/3/trending/all/day?api_key=${
       import.meta.env.VITE_API_KEY
     }`
   );
-  console.log(data.results);
+  // console.log(data.results);
+
 
   const [filteredMovies, setFilteredMovies] = useState();
+
   useEffect(() => {
     setFilteredMovies(data.results);
   }, [data]);
+  
   const filter = (e) => {
     console.log(e.target.value);
     const tmp = data.results.filter((item) => {
@@ -26,7 +29,7 @@ const Dashboard = () => {
     setFilteredMovies(tmp);
   };
   
-  console.log(filteredMovies);
+  // console.log(filteredMovies);
 
   return (
     <main className="container">

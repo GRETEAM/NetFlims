@@ -7,29 +7,50 @@ import Loader from "../components/Loader";
 const Movies = () => {
   const [data, SetData] = useState([]);
   const dispatch = useDispatch();
+  const [pageIndex, setPageIndex] = useState(1);
+  
+  useEffect(() => {
+    const infiniteCheck = () => {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  
+      if (scrollHeight - scrollTop === clientHeight) {
+        setPageIndex(pageIndex + 1);
+        console.log("Index de la page :", pageIndex);
+        console.log("Index de la page :", setPageIndex);
+      }
+    };
+    window.addEventListener("scroll", infiniteCheck);
+
+    return () => {
+      window.removeEventListener("scroll", infiniteCheck);
+    };
+  }, []);
+  // console.log(data);
+  console.log(pageIndex);
 
   useEffect(() => {
     const loadMovies = async () => {
-      await dispatch(fetchData());
+      await dispatch(fetchData(pageIndex));
     };
 
     loadMovies();
     
-  }, [dispatch]);
+  }, []);
 
   const movies = useSelector((store) => store.reducerMovies);
-  useEffect(() => {
-    SetData(movies.data);
-  }, [movies]);
+  // useEffect(() => {
+  //   SetData(movies.data);
+  // }, [movies]);
+  console.log(movies);
 
   return (
     <main className="container">
       <h1 className="title">Movies</h1>
       <div className="card-container">
-        {data.length == 0 || undefined ? (
+        {movies.length == 0 || undefined ? (
           <Loader />
         ) : (
-          data.map((movie) => {
+          movies.map((movie) => {
             if (movie.media_type === "movie") {
               return <Card data={movie} key={movie.id} />;
             }

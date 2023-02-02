@@ -9,11 +9,12 @@ import Loader from "../components/Loader";
 
 const Series = () => {
   const [data, SetData] = useState([]);
+    const [pageIndex, setPageIndex] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const loadSeries = async () => {
-      await dispatch(fetchData());
+      await dispatch(fetchData(pageIndex));
     };
     
     loadSeries();
