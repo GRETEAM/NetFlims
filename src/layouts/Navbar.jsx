@@ -1,3 +1,6 @@
+import { createClient } from "@supabase/supabase-js";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import bookmark from "../assets/icons/icon-nav-bookmark.svg";
 import home from "../assets/icons/icon-nav-home.svg";
@@ -6,11 +9,36 @@ import series from "../assets/icons/icon-nav-tv-series.svg";
 import profil from "../assets/icons/image-avatar.png";
 import logo from "../assets/icons/logo.svg";
 
-const Navbar = () => {
+const Navbar = ({setSessionStatus}) => {
+
+  const user = useSelector((store) => store.reducerUser);
+
 
   const activeStyle = {
     filter: "invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg) brightness(166%) contrast(100%)",
   };
+  const dispatch = useDispatch()
+  const supabase = createClient(
+    "https://vdqnrwraaybulbcxpyus.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkcW5yd3JhYXlidWxiY3hweXVzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQ5Mjc2MTcsImV4cCI6MTk5MDUwMzYxN30.FGb0DgDMenEMyZQbL5L-WYvLET04QNyU8_vVE0OZekk"
+  );
+  async function signOutUser(){
+    const {error} = await supabase.auth.signOut()
+    setSessionStatus("SIGNED_OUT")
+
+  }
+
+  useEffect(() => {
+    async function getUserData() {
+      await supabase.auth.getUser().then((value) => {
+        dispatch({type:"INIT_USER", payload:value.data.user})
+      });
+    }
+    getUserData();
+  }, []);
+
+  console.log(user);
+
 
   return (
     <section className="navbar">
@@ -29,6 +57,7 @@ const Navbar = () => {
           <NavLink style={({ isActive }) => isActive ? activeStyle : undefined } to="/bookmark">
             <img src={bookmark} alt="Go to your Favorites" />
           </NavLink>
+          <button onClick={signOutUser}>Logout</button>
         </div>
         <img src={profil} alt="" className="navbar-profil" />
       </nav>
