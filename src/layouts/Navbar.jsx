@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import bookmark from "../assets/icons/icon-nav-bookmark.svg";
@@ -12,6 +12,7 @@ import logo from "../assets/icons/logo.svg";
 const Navbar = ({setSessionStatus}) => {
 
   const user = useSelector((store) => store.reducerUser);
+  const [userId, setUserId] = useState()
 
 
   const activeStyle = {
@@ -29,15 +30,32 @@ const Navbar = ({setSessionStatus}) => {
   }
 
   useEffect(() => {
+    
     async function getUserData() {
+      async function getProfile(id) {
+        let { data, error, status } = await supabase
+          .from('profiles')
+          .select(`username, website, avatar_url`)
+          .eq('id', id)
+          .single()
+          console.log(data);
+          dispatch({type:"INIT_USER", payload:data})
+  
+    }
       await supabase.auth.getUser().then((value) => {
-        dispatch({type:"INIT_USER", payload:value.data.user})
+        setUserId(value.data.user.id)
+        getProfile(value.data.user.id)
       });
     }
+    console.log(userId);
+
     getUserData();
+
+
   }, []);
 
-  console.log(user);
+  
+console.log(user);
 
 
   return (

@@ -6,7 +6,6 @@ export const reducerUser = (state = initialState, action) => {
   switch (action.type) {
     case "INIT_USER":
       return action.payload;
-   
     default:
       return state;
   }
