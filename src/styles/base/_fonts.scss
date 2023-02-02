@@ -14,11 +14,16 @@
   font-size: 2rem;
   line-height: 2.5rem;
   letter-spacing: -0.3125px;
+  margin-top: 2.4rem;
 
   @include mq(tablet) {
     font-size: 3.2rem;
     line-height: 4rem;
     letter-spacing: -0.5px;
+    margin-top: 3.3rem;
+  }
+  @include mq(laptop) {
+    margin-top: 4rem;
   }
 }
 

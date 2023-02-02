@@ -11,10 +11,9 @@
 @use "./components/loader";
 @use "./components/trendingMovies";
 @use "./components/SearchBar";
-@use "./components/movies";
-
+@use "./components/card";
 
 // == PAGES == //
 @use "./pages/dashboard";
 @use "./pages/details";
-
+@use "./pages/movies-series";
