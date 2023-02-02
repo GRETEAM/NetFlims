@@ -20,3 +20,11 @@
     width: min(100% - 5rem, 124rem);
   }
 }
+
+// Le button entre les informations des films et séries
+.infos-circle {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}

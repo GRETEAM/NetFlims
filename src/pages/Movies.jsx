@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../actions/actionMovies";
+import Card from "../components/Card";
 import Loader from "../components/Loader";
-import Card from "./Card";
 
 const Movies = () => {
   const [data, SetData] = useState([]);
@@ -12,14 +12,19 @@ const Movies = () => {
     const loadMovies = async () => {
       await dispatch(fetchData());
     };
+
     loadMovies();
+    
   }, [dispatch]);
+
   const movies = useSelector((store) => store.reducerMovies);
   useEffect(() => {
     SetData(movies.data);
   }, [movies]);
+
   return (
-    <section className="container">
+    <main className="container">
+      <h1 className="title">Movies</h1>
       <div className="card-container">
         {data.length == 0 || undefined ? (
           <Loader />
@@ -31,7 +36,8 @@ const Movies = () => {
           })
         )}
       </div>
-    </section>
+    </main>
   );
 };
+
 export default Movies;

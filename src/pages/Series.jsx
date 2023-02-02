@@ -1,11 +1,11 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "../actions/actionMovies";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Loader from "../components/Loader";
 import "swiper/scss";
-import Card from "./Card";
+import { fetchData } from "../actions/actionMovies";
+import Card from "../components/Card";
+import Loader from "../components/Loader";
 
 const Series = () => {
   const [data, SetData] = useState([]);
@@ -15,15 +15,22 @@ const Series = () => {
     const loadSeries = async () => {
       await dispatch(fetchData());
     };
+    
     loadSeries();
+
   }, [dispatch]);
+
   const Series = useSelector((store) => store.reducerSeries);
   // console.log(Series)
   useEffect(() => {
+
     SetData(Series.data);
+
   }, [Series]);
+
   return (
-    <section className="container">
+    <main className="container">
+      <h1 className="title">Series</h1>
       <div className="card-container">
         {data.length == 0 || undefined ? (
           <Loader />
@@ -35,7 +42,7 @@ const Series = () => {
           })
         )}
       </div>
-    </section>
+    </main>
   );
 };
 export default Series;
