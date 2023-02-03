@@ -38,7 +38,7 @@ const Profile = () => {
 
 
   return (
-    <div>
+    <div className="container">
       Profil de {user.username}
       <form action="">
         <input

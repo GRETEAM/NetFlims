@@ -11,6 +11,7 @@ import store from "./Store";
 import { useEffect, useState } from "react";
 import Profile from "./pages/Profile";
 import Auth from "./components/Auth";
+import { createClient } from "@supabase/supabase-js";
 
 const App = () => {
 

@@ -1,9 +1,9 @@
-import { createClient } from '@supabase/supabase-js';
-import { useEffect, useState } from 'react'
+import { createClient } from "@supabase/supabase-js";
+import { useEffect, useState } from "react";
 
-export default function Auth({setSessionStatus}) {
-  const [loading, setLoading] = useState(false)
-  const [email, setEmail] = useState('')
+export default function Auth({ setSessionStatus }) {
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
 
   const supabase = createClient(
     import.meta.env.VITE_PROJECT_URL,
@@ -11,24 +11,24 @@ export default function Auth({setSessionStatus}) {
   );
 
   const handleLogin = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-      setLoading(true)
-      const { error } = await supabase.auth.signInWithOtp({ email })
-      if (error) throw error
-      alert('Check your email for the login link!')
+      setLoading(true);
+      const { error } = await supabase.auth.signInWithOtp({ email });
+      if (error) throw error;
+      alert("Check your email for the login link!");
     } catch (error) {
-      alert(error.error_description || error.message)
+      alert(error.error_description || error.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange(async (event) => {
       console.log("test");
-      console.log(data)
+      console.log(data);
       if (event == "SIGNED_IN") {
         setSessionStatus("SIGNED_IN");
       } else {
@@ -54,29 +54,35 @@ export default function Auth({setSessionStatus}) {
   }, []);
 
   return (
-    <div className="row flex-center flex">
-      <div className="col-6 form-widget" aria-live="polite">
-        <h1 className="header">Supabase + React</h1>
-        <p className="description">Sign in via magic link with your email below</p>
-        {loading ? (
-          'Sending magic link...'
-        ) : (
-          <form onSubmit={handleLogin}>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              className="inputField"
-              type="email"
-              placeholder="Your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button className="button block" aria-live="polite">
-              Send magic link
-            </button>
-          </form>
-        )}
+    <div className="container">
+      <div className="form-container" aria-live="polite">
+
+          <h1 className="form-title">Login x SignUp</h1>
+          <p className="form-description">
+            Sign in-up via magic link with your email below
+          </p>
+          {loading ? (
+            "Sending magic link..."
+          ) : (
+            <form onSubmit={handleLogin} className="form-form">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                className="inputField"
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <div>
+                <button className="button block test" aria-live="polite">
+                  Send magic link
+                </button>
+              </div>
+            </form>
+          )}
+
       </div>
     </div>
-  )
+  );
 }
