@@ -40,6 +40,7 @@ const Movies = () => {
     <main className="container">
       <h1 className="title">Movies</h1>
       <div className="card-container">
+        
         {movies.length == 0 || undefined ? (
           <Loader />
         ) : (
