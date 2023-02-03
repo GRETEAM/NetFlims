@@ -12,11 +12,13 @@ import { useEffect, useState } from "react";
 import Profile from "./pages/Profile";
 import Auth from "./components/Auth";
 import { createClient } from "@supabase/supabase-js";
+import { supabase } from "./supabaseClient";
 
 const App = () => {
 
   const [sessionStatus, setSessionStatus] = useState();
   console.log(sessionStatus);
+  
 
   return (
     <>

@@ -7,7 +7,7 @@ import series from "../assets/icons/icon-series.svg";
 const Card = ({ data }) => {
   return (
     <div className="card">
-      <Link to={`/${data.id}`} state={{ movie: data.media_type }}>
+      <Link to={`/${data.id}`} state={{ movie: data }}>
       <img
         className="card-img"
         src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}

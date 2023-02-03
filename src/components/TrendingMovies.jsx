@@ -14,7 +14,7 @@ const TrendingMovies = ({ loading, movies }) => {
           {movies?.map((movie) => {
             return (
               <SwiperSlide className="slider-content" key={movie.id}>
-                <Link to={`/${movie.id}`} state={{ movie: movie.media_type }}>
+                <Link to={`/${movie.id}`} state={{ movie: movie }}>
                   <img
                     className="slider-content-img"
                     src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}

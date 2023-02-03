@@ -33,7 +33,7 @@ const Navbar = ({setSessionStatus}) => {
       async function getProfile(id) {
         let { data, error, status } = await supabase
           .from('profiles')
-          .select(`username, website, avatar_url,id `)
+          .select(`username, website, avatar_url,id,bookmarks `)
           .eq('id', id)
           .single()
           dispatch({type:"INIT_USER", payload:data})
@@ -47,7 +47,9 @@ const Navbar = ({setSessionStatus}) => {
 
   }, []);
 
-  console.log(user.avatar_url)
+
+
+  console.log(user);
 
 
   return (
@@ -70,7 +72,7 @@ const Navbar = ({setSessionStatus}) => {
           <button onClick={signOutUser}>Logout</button>
         </div>
         <NavLink style={({ isActive }) => isActive ? activeStyle : undefined } to="/profile">
-        <img src={`https://ntfoasxreihkfxaexagz.supabase.co/storage/v1/object/public/avatars/${user.avatar_url}`} alt="" className="navbar-profil" />
+        <img src={`https://ntfoasxreihkfxaexagz.supabase.co/storage/v1/object/public/avatars/${user.avatar_url}`} alt="No pfp" className="navbar-profil" />
         </NavLink>
 
       </nav>
