@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Avatar from "../components/Avatar";
 
 const Profile = () => {
   const user = useSelector((store) => store.reducerUser);
@@ -21,7 +22,6 @@ const Profile = () => {
   );
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
     const { data, error } = await supabase
       .from("profiles")
@@ -54,6 +54,14 @@ const Profile = () => {
           Update
         </button>
       </form>
+      <Avatar
+      url={avatar_url}
+      size={150}
+      onUpload={(url) => {
+        setAvatarUrl(url)
+        handleSubmit({ username, website, avatar_url: url })
+      }}
+    />
     </div>
   );
 };

@@ -47,7 +47,7 @@ const Navbar = ({setSessionStatus}) => {
 
   }, []);
 
-  console.log(user)
+  console.log(user.avatar_url)
 
 
   return (
@@ -70,7 +70,7 @@ const Navbar = ({setSessionStatus}) => {
           <button onClick={signOutUser}>Logout</button>
         </div>
         <NavLink style={({ isActive }) => isActive ? activeStyle : undefined } to="/profile">
-        <img src={profil} alt="" className="navbar-profil" />
+        <img src={`https://ntfoasxreihkfxaexagz.supabase.co/storage/v1/object/public/avatars/${user.avatar_url}`} alt="" className="navbar-profil" />
         </NavLink>
 
       </nav>
