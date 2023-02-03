@@ -12,8 +12,6 @@ import logo from "../assets/icons/logo.svg";
 const Navbar = ({setSessionStatus}) => {
 
   const user = useSelector((store) => store.reducerUser);
-  const [userId, setUserId] = useState()
-
 
   const activeStyle = {
     filter: "invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg) brightness(166%) contrast(100%)",
@@ -35,27 +33,21 @@ const Navbar = ({setSessionStatus}) => {
       async function getProfile(id) {
         let { data, error, status } = await supabase
           .from('profiles')
-          .select(`username, website, avatar_url`)
+          .select(`username, website, avatar_url,id `)
           .eq('id', id)
           .single()
-          console.log(data);
           dispatch({type:"INIT_USER", payload:data})
   
     }
       await supabase.auth.getUser().then((value) => {
-        setUserId(value.data.user.id)
         getProfile(value.data.user.id)
       });
     }
-    console.log(userId);
-
     getUserData();
-
 
   }, []);
 
-  
-console.log(user);
+  console.log(user)
 
 
   return (
@@ -77,7 +69,10 @@ console.log(user);
           </NavLink>
           <button onClick={signOutUser}>Logout</button>
         </div>
+        <NavLink style={({ isActive }) => isActive ? activeStyle : undefined } to="/profile">
         <img src={profil} alt="" className="navbar-profil" />
+        </NavLink>
+
       </nav>
     </section>
   );

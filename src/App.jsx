@@ -10,6 +10,7 @@ import Series from "./pages/Series";
 import store from "./Store";
 import { useEffect, useState } from "react";
 import Authentication from "./components/Authentication";
+import Profile from "./pages/Profile";
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
               <Route path="/series" element={<Series />} />
               <Route path="/bookmark" element={<Bookmark />} />
               <Route path="/person" element={<Person />} />
+              <Route path="/profile" element={<Profile/>} />
               <Route path="/:detail" element={<Details />} />
             </Routes>
           </BrowserRouter>

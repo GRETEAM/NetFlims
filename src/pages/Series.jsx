@@ -1,3 +1,4 @@
+import { createClient } from "@supabase/supabase-js";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,12 +23,13 @@ const Series = () => {
   }, [dispatch]);
 
   const Series = useSelector((store) => store.reducerSeries);
-  // console.log(Series)
   useEffect(() => {
 
     SetData(Series.data);
 
   }, [Series]);
+
+
 
   return (
     <main className="container">
