@@ -1,5 +1,6 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
 import Loader from "./Loader";
@@ -10,7 +11,12 @@ const TrendingMovies = ({ loading, movies }) => {
       {loading ? (
         <Loader />
       ) : (
-        <Swiper className="slider">
+        <Swiper
+          className="slider"
+          slidesPerView={"auto"}
+          navigation={true}
+          modules={[Navigation]}
+        >
           {movies?.map((movie) => {
             return (
               <SwiperSlide className="slider-content" key={movie.id}>
