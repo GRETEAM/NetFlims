@@ -27,8 +27,6 @@ export default function Auth({ setSessionStatus }) {
 
   useEffect(() => {
     const { data } = supabase.auth.onAuthStateChange(async (event) => {
-      console.log("test");
-      console.log(data);
       if (event == "SIGNED_IN") {
         setSessionStatus("SIGNED_IN");
       } else {

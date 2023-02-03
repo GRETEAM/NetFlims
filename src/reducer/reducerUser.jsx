@@ -6,6 +6,10 @@ export const reducerUser = (state = initialState, action) => {
   switch (action.type) {
     case "INIT_USER":
       return action.payload;
+    case "ADD_BOOKMARK":
+      return {...cloneState , bookmarks:action.payload}
+    case "DELETE_BOOKMARK":
+      return {...cloneState , bookmarks:action.payload}
     default:
       return state;
   }
