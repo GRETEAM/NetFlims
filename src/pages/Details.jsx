@@ -1,17 +1,17 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 const Details = () => {
   const id = useParams().detail;
   const location = useLocation();
-  console.log(location.state.movie);
+  // console.log(location.state.movie);
   const { loading, error, data } = useFetch(
     `https://api.themoviedb.org/3/${location.state.movie}/${id}?api_key=${
       import.meta.env.VITE_API_KEY
     }&language=en-US`
   );
-  console.log(data);
+  // console.log(data);
   return (
     <div className="detail_container">
       <div className="detail container">

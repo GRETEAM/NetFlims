@@ -1,23 +1,26 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
 import { Navigation } from "swiper";
+import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
 import Loader from "./Loader";
 
-const TrendingMovies = ({ loading, movies }) => {
+const TrendingMovies = ({ movies }) => {
+
   return (
     <section className="recommend">
-      {loading ? (
-        <Loader />
-      ) : (
+      {movies.length === 0 || undefined ? (
+          <Loader />
+        ) : (
         <Swiper
+          rewind={true}
           className="slider"
           slidesPerView={"auto"}
           navigation={true}
           modules={[Navigation]}
         >
-          {movies?.map((movie) => {
+          {movies.map((movie) => {
             return (
               <SwiperSlide className="slider-content" key={movie.id}>
                 <Link to={`/${movie.id}`} state={{ movie: movie.media_type }}>

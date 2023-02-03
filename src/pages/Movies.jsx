@@ -9,7 +9,6 @@ const Movies = () => {
   const movies = useSelector((store) => store.reducerMovies);
   const dispatch = useDispatch();
 
-  const [data, SetData] = useState([]);
   const [pageIndex, setPageIndex] = useState(1);
 
   useEffect(() => {
@@ -22,21 +21,16 @@ const Movies = () => {
         dispatch(fetchScroll(pageIndex+1));
       }
     };
+    
     window.addEventListener("scroll", infiniteCheck);
     return () => {
       window.removeEventListener("scroll", infiniteCheck);
     };
   }, [pageIndex]);
 
-
   useEffect(() => {
     dispatch(initMovies());
   }, []);
-
-
-  useEffect(() => {
-    SetData(movies.data);
-  }, [movies]);
 
   return (
     <main className="container">

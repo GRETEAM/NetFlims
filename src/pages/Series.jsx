@@ -1,42 +1,45 @@
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
-import {  fetchScroll } from "../actions/actionMovies";
+import { fetchScroll } from "../actions/actionMovies";
+import { initMovies } from "../actions/initMovies";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 
 const Series = () => {
-  const [data, SetData] = useState([]);
-    const [pageIndex, setPageIndex] = useState(1);
+  const series = useSelector((store) => store.reducerMovies);
   const dispatch = useDispatch();
+  const [pageIndex, setPageIndex] = useState(1);
 
   useEffect(() => {
-    const loadSeries = async () => {
-      await dispatch(fetchScroll(pageIndex));
+    const infiniteCheck = () => {
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
+      if (scrollHeight - scrollTop === clientHeight) {
+        setPageIndex((pageIndex) => pageIndex + 1);
+        // console.log(pageIndex);
+        dispatch(fetchScroll(pageIndex + 1));
+      }
     };
     
-    loadSeries();
+    window.addEventListener("scroll", infiniteCheck);
+    return () => {
+      window.removeEventListener("scroll", infiniteCheck);
+    };
+  }, [pageIndex]);
 
-  }, [dispatch]);
-
-  const Series = useSelector((store) => store.reducerSeries);
-  // console.log(Series)
   useEffect(() => {
-
-    SetData(Series.data);
-
-  }, [Series]);
+    dispatch(initMovies());
+  }, []);
 
   return (
     <main className="container">
       <h1 className="title">Series</h1>
       <div className="card-container">
-        {data.length == 0 || undefined ? (
+        {series.length == 0 || undefined ? (
           <Loader />
         ) : (
-          data.map((serie) => {
+          series.map((serie) => {
             if (serie.media_type === "tv") {
               return <Card data={serie}  key={serie.id}  />;
             }
