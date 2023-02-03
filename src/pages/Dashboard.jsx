@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { initMovies } from "../actions/initMovies";
 import SearchBar from "../components/SearchBar";
 import TrendingMovies from "../components/TrendingMovies";
 import useFetch from "../hooks/useFetch";
 
 const Dashboard = () => {
+
+  const dataMovies = useSelector((store) => store.reducerMovies);
+  const dispatch = useDispatch();
   
   const { loading, error, data } = useFetch(
     `https://api.themoviedb.org/3/trending/all/day?api_key=${
       import.meta.env.VITE_API_KEY
     }`
   );
-  // console.log(data.results);
 
-
+  //! To filter the movies => NEED A FIX
   const [filteredMovies, setFilteredMovies] = useState();
 
   useEffect(() => {
@@ -28,8 +32,11 @@ const Dashboard = () => {
     });
     setFilteredMovies(tmp);
   };
-  
-  // console.log(filteredMovies);
+
+  //* To fetch the movies but from the store;
+  useEffect(() => {
+    dispatch(initMovies());
+  }, []);
 
   return (
     <main className="container">
@@ -40,7 +47,7 @@ const Dashboard = () => {
         <h1 className="title">Trending</h1>
       </section>
       
-      <TrendingMovies loading={loading} movies={filteredMovies} />
+      <TrendingMovies loading={loading} movies={dataMovies} />
       
     </main>
   );

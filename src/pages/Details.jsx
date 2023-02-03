@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import Pin from "../components/Pin";
@@ -13,7 +13,7 @@ const Details = () => {
       <div className="detail container">
         <img
           src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
-          alt=""
+          alt={data.name || data.original_title}
         />
         <h1>{data.name || data.original_title}</h1>
         <p className="overview">{data.overview}</p>
