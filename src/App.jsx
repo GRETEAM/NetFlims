@@ -9,8 +9,8 @@ import Person from "./pages/Person";
 import Series from "./pages/Series";
 import store from "./Store";
 import { useEffect, useState } from "react";
-import Authentication from "./components/Authentication";
 import Profile from "./pages/Profile";
+import Auth from "./components/Auth";
 
 const App = () => {
 
@@ -20,7 +20,10 @@ const App = () => {
   return (
     <>
       {sessionStatus != "SIGNED_IN" ? (
-        <Authentication setSessionStatus={setSessionStatus} />
+        <>
+        {/* <Authentication setSessionStatus={setSessionStatus} /> */}
+        <Auth setSessionStatus={setSessionStatus}/>
+        </>
       ) : (
         <Provider store={store}>
           <BrowserRouter>
