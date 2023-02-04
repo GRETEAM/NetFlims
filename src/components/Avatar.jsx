@@ -1,9 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 export default function Avatar({ url, size, onUpload }) {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
+  const user = useSelector((store) => store.reducerUser);
+
 
   const supabase = createClient(
     import.meta.env.VITE_PROJECT_URL,
@@ -18,7 +21,7 @@ export default function Avatar({ url, size, onUpload }) {
 
   const downloadImage = async (path) => {
     try {
-      const { data, error } = await supabase.storage.from('avatars').download(path)
+      const { data, error } = await supabase.storage.from('avatars').download(user.id + "/" + path)
       if (error) {
         throw error
       }
@@ -42,8 +45,8 @@ export default function Avatar({ url, size, onUpload }) {
       const fileExt = file.name.split('.').pop()
       const fileName = `${Math.random()}.${fileExt}`
       const filePath = `${fileName}`
-
-      let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file)
+      console.log(filePath, file)
+      let { error: uploadError } = await supabase.storage.from('avatars').upload(user.id + "/" + filePath, file)
 
       if (uploadError) {
         throw uploadError
