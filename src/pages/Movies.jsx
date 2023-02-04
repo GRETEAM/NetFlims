@@ -9,19 +9,22 @@ const Movies = () => {
   const movies = useSelector((store) => store.reducerMovies);
   const dispatch = useDispatch();
 
-  const [data, SetData] = useState([]);
   const [pageIndex, setPageIndex] = useState(1);
-
-  useEffect(() => {
+  // let pageIndex = 1;
+  
+  useEffect(() => {    
     const infiniteCheck = () => {
       const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
       if (scrollHeight - scrollTop === clientHeight) {
         setPageIndex((pageIndex) => pageIndex + 1);
+        console.log(pageIndex);
         dispatch(fetchScroll(pageIndex + 1));
+        // Celui en dessous fonctionne aussi
+        // dispatch(fetchScroll(pageIndex));
       }
     };
-
+    
     window.addEventListener("scroll", infiniteCheck);
     return () => {
       window.removeEventListener("scroll", infiniteCheck);
@@ -31,10 +34,6 @@ const Movies = () => {
   useEffect(() => {
     dispatch(initMovies());
   }, []);
-
-  useEffect(() => {
-    SetData(movies.data);
-  }, [movies]);
 
   return (
     <main className="container">
