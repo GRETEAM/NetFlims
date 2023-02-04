@@ -72,7 +72,7 @@ const Navbar = ({setSessionStatus}) => {
           <button onClick={signOutUser}>Logout</button>
         </div>
         <NavLink style={({ isActive }) => isActive ? activeStyle : undefined } to="/profile">
-        <img src={`https://ntfoasxreihkfxaexagz.supabase.co/storage/v1/object/public/avatars/${user.avatar_url}`} alt="No pfp" className="navbar-profil" />
+        <img src={`https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user?.avatar_url}`} alt="No pfp" className="navbar-profil" />
         </NavLink>
 
       </nav>

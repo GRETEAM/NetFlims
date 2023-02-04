@@ -11,7 +11,9 @@ export default function Avatar({ url, size, onUpload }) {
   );
 
   useEffect(() => {
-    if (url) downloadImage(url)
+    if (url){
+      downloadImage(url)
+    } 
   }, [url])
 
   const downloadImage = async (path) => {
@@ -21,6 +23,7 @@ export default function Avatar({ url, size, onUpload }) {
         throw error
       }
       const url = URL.createObjectURL(data)
+      console.log(url);
       setAvatarUrl(url)
     } catch (error) {
       console.log('Error downloading image: ', error.message)
