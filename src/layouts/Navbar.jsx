@@ -16,6 +16,9 @@ const Navbar = ({setSessionStatus}) => {
   const activeStyle = {
     filter: "invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg) brightness(166%) contrast(100%)",
   };
+
+  
+
   const dispatch = useDispatch()
   const supabase = createClient(
     import.meta.env.VITE_PROJECT_URL,
@@ -71,7 +74,7 @@ const Navbar = ({setSessionStatus}) => {
           </NavLink>
           <button onClick={signOutUser}>Logout</button>
         </div>
-        <NavLink style={({ isActive }) => isActive ? activeStyle : undefined } to="/profile">
+        <NavLink  to="/profile">
         <img src={`https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user.id}/${user?.avatar_url}`} alt="No pfp" className="navbar-profil" />
         </NavLink>
 
