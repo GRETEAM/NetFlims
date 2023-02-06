@@ -1,0 +1,95 @@
+@use "../base/mixins" as *;
+
+.profile {
+  margin-top: 10rem;
+  background-color: var(--bg-dark-nav);
+  padding: 3.2rem;
+  border-radius: 2rem;
+
+  @include mq(tablet) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 80rem;
+    margin: auto;
+    margin-top: 14rem;
+  }
+
+  &-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 33.6rem;
+    margin: auto;
+    margin-bottom: 4rem;
+
+    @include mq(tablet) {
+      margin-bottom: 6rem;
+    }
+
+    &-form {
+      width: 100%;
+      max-width: 33.6rem;
+
+      input {
+        font-size: 1.5rem;
+        line-height: 1.9rem;
+        letter-spacing: 0.1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid #5a698f;
+          width: 100%;
+          padding: 0 0 1.8rem 1.6rem;
+          margin: 4rem 0 4rem 0;
+
+          @include mq(tablet) {
+            margin: 4rem 0 7.5rem 0;
+          }
+
+          &::placeholder {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      &-button {
+        text-align: center;
+        background-color: #fc4747;
+        max-width: 33.6rem;
+        width: 100%;
+        padding: 1.4rem 0 1.5rem 0;
+        border-radius: 6px;
+        font-weight: 300;
+        font-size: 1.5rem;
+        line-height: 1.9rem;
+        letter-spacing: 0.15rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-avatar {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image {
+      margin: 4rem 0;
+
+      @include mq(tablet) {
+        margin: 0;
+        margin-bottom: 4rem;
+      }
+    }
+
+    .upload-file {
+      margin-top: 4rem;
+
+      input[type="file"] {
+        visibility: hidden;
+      }
+    }
+  }
+}

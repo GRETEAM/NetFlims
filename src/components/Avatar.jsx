@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function Avatar({ url, size, onUpload }) {
@@ -61,21 +61,21 @@ export default function Avatar({ url, size, onUpload }) {
   }
 
   return (
-    <div style={{ width: size }} aria-live="polite">
+    <div className="profile-avatar" aria-live="polite">
       <img
         src={avatarUrl ? avatarUrl : `https://place-hold.it/${size}x${size}`}
-        alt={avatarUrl ? 'Avatar' : 'No image'}
+        alt={avatarUrl ? "Avatar" : "No image"}
         className="avatar image"
         style={{ height: size, width: size }}
       />
       {uploading ? (
-        'Uploading...'
+        "Uploading..."
       ) : (
         <>
-          <label className="button primary block" htmlFor="single">
-            Upload an avatar
+          <label className="profile-infos-form-button" htmlFor="single">
+            Update the avatar
           </label>
-          <div className="visually-hidden">
+          <div className="upload-file">
             <input
               type="file"
               id="single"
@@ -87,5 +87,5 @@ export default function Avatar({ url, size, onUpload }) {
         </>
       )}
     </div>
-  )
+  );
 }

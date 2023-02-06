@@ -28,7 +28,7 @@ const BookMarkedOrNot = () => {
         .update([{ bookmarks: deleted }])
         .eq("id", user.id);
     } else {
-      tmp.push(user.bookmarks);
+      // tmp.push(user.bookmarks);
       // console.log(tmp);
       dispatch({ type: "ADD_BOOKMARK", payload: tmp });
       const { data, error } = await supabase
@@ -43,14 +43,14 @@ const BookMarkedOrNot = () => {
       {inBookmarks ? (
         <button
           className="card-bookmark-img"
-          onClick={() => handleSubmit("add")}
+          // onClick={() => handleSubmit("add")}
         >
           <img src={addToBookmark} alt="Add to bookmark" />
         </button>
       ) : (
         <button
           className="card-bookmark-img"
-          onClick={() => handleSubmit("del")}
+          // onClick={() => handleSubmit("del")}
         >
           <img src={delToBookmark} alt="Delete to bookmark" />
         </button>

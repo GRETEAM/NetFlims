@@ -5,7 +5,7 @@ import Avatar from "../components/Avatar";
 
 const Profile = () => {
   const user = useSelector((store) => store.reducerUser);
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState('');
   const [website, setWebsite] = useState();
   const [avatar_url, setAvatarUrl] = useState();
   const [error, setError] = useState()
@@ -22,6 +22,7 @@ const Profile = () => {
   );
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const { data, error } = await supabase
       .from("profiles")
@@ -35,34 +36,34 @@ const Profile = () => {
       }
   };
 
-
-
   return (
-    <div className="container">
-      Profil de {user.username}
-      <form action="">
-        <input
-          type="text"
-          value={username || ""}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <span>fdsfsdfd</span>
-        <button
-          className="button primary block"
-          onClick={handleSubmit}
-        >
-          Update
-        </button>
-      </form>
-      <Avatar
-      url={avatar_url}
-      size={150}
-      onUpload={(url) => {
-        setAvatarUrl(url)
-        handleSubmit({ username, website, avatar_url: url })
-      }}
-    />
-    </div>
+    <main className="container">
+      <section className="profile">
+        <div className="profile-infos">
+          <h1 className="title">Profil de {username}</h1>
+        <div className="profile-infos-form">
+          <form>
+            <input
+              type="text"
+              placeholder={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <button className="profile-infos-form-button" onClick={handleSubmit}>
+              Update username
+            </button>
+          </form>
+        </div>
+        </div>
+          <Avatar
+            url={avatar_url}
+            size={150}
+            onUpload={(url) => {
+              setAvatarUrl(url);
+              handleSubmit({ username, website, avatar_url: url });
+            }}
+          />
+      </section>
+    </main>
   );
 };
 
