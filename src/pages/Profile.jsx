@@ -8,7 +8,7 @@ const Profile = () => {
   const [username, setUsername] = useState('');
   const [website, setWebsite] = useState();
   const [avatar_url, setAvatarUrl] = useState();
-  const [error, setError] = useState()
+  const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -29,11 +29,11 @@ const Profile = () => {
       .update([{ username, website, avatar_url }])
       .eq("id", user.id);
 
-      console.log(error);
-      if (error?.code == 23505){
-        setError("This username is already taken")
-        alert("Username already taken")
-      }
+    console.log(error);
+    if (error?.code == 23505) {
+      setError("This username is already taken");
+      alert("Username already taken");
+    }
   };
 
   return (

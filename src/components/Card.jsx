@@ -3,6 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import movies from "../assets/icons/icon-movies.svg";
 import series from "../assets/icons/icon-series.svg";
+import Pin from "./Pin";
+
 
 const Card = ({ data }) => {
     
@@ -15,7 +17,7 @@ const Card = ({ data }) => {
           alt={data.title || data.name}
         />
         </Link>
-        <BookMarkedOrNot />
+        {/* <BookMarkedOrNot /> */}
         <Link to={`/${data.id}`} state={{ movie: data }}>
         <div className="card-description">
           <p className="card-description-date">
@@ -41,6 +43,7 @@ const Card = ({ data }) => {
           {data.original_title || data.name}
         </h2>
       </Link>
+      <Pin pageData={data}/>
     </div>
   );
 };
