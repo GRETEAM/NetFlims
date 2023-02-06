@@ -17,8 +17,6 @@ const Navbar = ({setSessionStatus}) => {
     filter: "invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg) brightness(166%) contrast(100%)",
   };
 
-  
-
   const dispatch = useDispatch()
   const supabase = createClient(
     import.meta.env.VITE_PROJECT_URL,
@@ -52,7 +50,7 @@ const Navbar = ({setSessionStatus}) => {
 
 
 
-  console.log(user);
+  // console.log(user);
 
 
   return (
