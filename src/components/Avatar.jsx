@@ -1,9 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function Avatar({ url, size, onUpload }) {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
+  const user = useSelector((store) => store.reducerUser);
+
 
   const supabase = createClient(
     import.meta.env.VITE_PROJECT_URL,
@@ -18,7 +21,7 @@ export default function Avatar({ url, size, onUpload }) {
 
   const downloadImage = async (path) => {
     try {
-      const { data, error } = await supabase.storage.from('avatars').download(path)
+      const { data, error } = await supabase.storage.from('avatars').download(user.id + "/" + path)
       if (error) {
         throw error
       }
@@ -42,8 +45,8 @@ export default function Avatar({ url, size, onUpload }) {
       const fileExt = file.name.split('.').pop()
       const fileName = `${Math.random()}.${fileExt}`
       const filePath = `${fileName}`
-
-      let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file)
+      console.log(filePath, file)
+      let { error: uploadError } = await supabase.storage.from('avatars').upload(user.id + "/" + filePath, file)
 
       if (uploadError) {
         throw uploadError
@@ -58,21 +61,21 @@ export default function Avatar({ url, size, onUpload }) {
   }
 
   return (
-    <div style={{ width: size }} aria-live="polite">
+    <div className="profile-avatar" aria-live="polite">
       <img
         src={avatarUrl ? avatarUrl : `https://place-hold.it/${size}x${size}`}
-        alt={avatarUrl ? 'Avatar' : 'No image'}
+        alt={avatarUrl ? "Avatar" : "No image"}
         className="avatar image"
         style={{ height: size, width: size }}
       />
       {uploading ? (
-        'Uploading...'
+        "Uploading..."
       ) : (
         <>
-          <label className="button primary block" htmlFor="single">
-            Upload an avatar
+          <label className="profile-infos-form-button button-white" htmlFor="single">
+            Modify your avatar
           </label>
-          <div className="visually-hidden">
+          <div className="upload-file">
             <input
               type="file"
               id="single"
@@ -84,5 +87,5 @@ export default function Avatar({ url, size, onUpload }) {
         </>
       )}
     </div>
-  )
+  );
 }

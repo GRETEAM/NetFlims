@@ -20,6 +20,7 @@ const Navbar = ({ setSessionStatus }) => {
       "invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg) brightness(166%) contrast(100%)",
   };
   const dispatch = useDispatch();
+
   const supabase = createClient(
     import.meta.env.VITE_PROJECT_URL,
     import.meta.env.VITE_ANON_API_KEY
@@ -45,8 +46,6 @@ const Navbar = ({ setSessionStatus }) => {
     }
     getUserData();
   }, []);
-
-  console.log(user);
 
   return (
     <section className="navbar">

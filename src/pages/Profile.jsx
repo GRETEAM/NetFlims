@@ -5,10 +5,10 @@ import Avatar from "../components/Avatar";
 
 const Profile = () => {
   const user = useSelector((store) => store.reducerUser);
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState('');
   const [website, setWebsite] = useState();
   const [avatar_url, setAvatarUrl] = useState();
-  const [error, setError] = useState()
+  const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -22,47 +22,49 @@ const Profile = () => {
   );
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const { data, error } = await supabase
       .from("profiles")
       .update([{ username, website, avatar_url }])
       .eq("id", user.id);
 
-      console.log(error);
-      if (error?.code == 23505){
-        setError("This username is already taken")
-        alert("Username already taken")
-      }
+    console.log(error);
+    if (error?.code == 23505) {
+      setError("This username is already taken");
+      alert("Username already taken");
+    }
   };
 
-
-
   return (
-    <div className="container">
-      Profil de {user.username}
-      <form action="">
-        <input
-          type="text"
-          value={username || ""}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <span>fdsfsdfd</span>
-        <button
-          className="button primary block"
-          onClick={handleSubmit}
-        >
-          Update
+    <main className="container">
+      <section className="profile">
+        <div className="profile-container">
+          <div className="profile-infos">
+            <h1 className="title">Profil of {username}</h1>
+            <div className="profile-infos-form">
+              <form>
+                <input
+                  type="text"
+                  placeholder={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </form>
+            </div>
+          </div>
+          <Avatar
+            url={avatar_url}
+            size={150}
+            onUpload={(url) => {
+              setAvatarUrl(url);
+            }}
+          />
+        </div>
+        <button className="profile-infos-form-button button-red" onClick={handleSubmit}>
+          Update the profil
         </button>
-      </form>
-      <Avatar
-      url={avatar_url}
-      size={150}
-      onUpload={(url) => {
-        setAvatarUrl(url)
-        handleSubmit({ username, website, avatar_url: url })
-      }}
-    />
-    </div>
+      </section>
+    </main>
   );
 };
 

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { supabase } from "../supabaseClient";
+import addToBookmark from '../assets/icons/icon-bookmark-empty.svg';
+import delToBookmark from '../assets/icons/icon-bookmark-full.svg';
 
-const Pin = ({ pageData, type }) => {
+const Pin = ({ pageData }) => {
   const user = useSelector((store) => store.reducerUser);
-  console.log(user.bookmarks);
   const dispatch = useDispatch();
 
   const [bookmarks, setBookmarks] = useState(false);
   const [inBookmarks, setInBookmarks] = useState();
+
 
   useEffect(() => {
     const allBookmarks = () => {
@@ -23,7 +25,7 @@ const Pin = ({ pageData, type }) => {
   }, [user.bookmarks,[]]);
 
   const handleSubmit = async (e) => {
-    console.log(user.bookmarks);
+    // console.log(user.bookmarks);
     const tmp = user.bookmarks != null ? [...user.bookmarks] : [];
     if (e == "del") {
       const deleted = tmp.filter((item) => {
@@ -47,11 +49,23 @@ const Pin = ({ pageData, type }) => {
     }
   };
   return (
-    <div>
-      {inBookmarks ? (
-        <button onClick={() => handleSubmit("del")}>Delete</button>
+    <div className="card-bookmark">
+    
+
+{!inBookmarks ? (
+        <button
+          className="card-bookmark-img"
+          onClick={() => handleSubmit("add")}
+        >
+          <img src={addToBookmark} alt="Add to bookmark" />
+        </button>
       ) : (
-        <button onClick={() => handleSubmit("add")}>add</button>
+        <button
+          className="card-bookmark-img"
+          onClick={() => handleSubmit("del")}
+        >
+          <img src={delToBookmark} alt="Delete to bookmark" />
+        </button>
       )}
     </div>
   );
