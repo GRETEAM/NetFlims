@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { NavLink } from "react-router-dom";
 
-function Modal({ setSessionStatus, user }) {
+const Modal=({ setSessionStatus, user })=>{
 
 console.log(user)
   const supabase = createClient(
@@ -14,9 +14,7 @@ console.log(user)
     setSessionStatus("SIGNED_OUT");
   }
   return (
-    <div
-      className="container-modal"
-    >
+    <div className="container-modal">
       <div className="modal">
         <NavLink to="/profile">Profile</NavLink>
         <h2 className="container-modal-title">{user.username}</h2>

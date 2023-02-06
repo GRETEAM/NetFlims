@@ -88,7 +88,7 @@ const Navbar = ({ setSessionStatus }) => {
               />
             </button>
           </li>
-          <li>
+          <li style={{position:"relative"}}>
             {cartIsOpen && <Modal setSessionStatus={setSessionStatus} user={user} />}
           </li>
         </ul>
