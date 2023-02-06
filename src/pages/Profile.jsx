@@ -8,7 +8,7 @@ const Profile = () => {
   const [username, setUsername] = useState();
   const [website, setWebsite] = useState();
   const [avatar_url, setAvatarUrl] = useState();
-  const [error, setError] = useState()
+  const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -22,20 +22,17 @@ const Profile = () => {
   );
 
   const handleSubmit = async (e) => {
-
     const { data, error } = await supabase
       .from("profiles")
       .update([{ username, website, avatar_url }])
       .eq("id", user.id);
 
-      console.log(error);
-      if (error?.code == 23505){
-        setError("This username is already taken")
-        alert("Username already taken")
-      }
+    console.log(error);
+    if (error?.code == 23505) {
+      setError("This username is already taken");
+      alert("Username already taken");
+    }
   };
-
-
 
   return (
     <div className="container">
@@ -46,22 +43,18 @@ const Profile = () => {
           value={username || ""}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <span>fdsfsdfd</span>
-        <button
-          className="button primary block"
-          onClick={handleSubmit}
-        >
+        {/* Ce button update la photo de profil et le pseudo */}
+        <button className="button primary block" onClick={handleSubmit}>
           Update
         </button>
       </form>
       <Avatar
-      url={avatar_url}
-      size={150}
-      onUpload={(url) => {
-        setAvatarUrl(url)
-        handleSubmit({ username, website, avatar_url: url })
-      }}
-    />
+        url={avatar_url}
+        size={150}
+        onUpload={(url) => {
+          setAvatarUrl(url);
+        }}
+      />
     </div>
   );
 };
