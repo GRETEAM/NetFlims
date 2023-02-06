@@ -9,16 +9,19 @@ const Details = () => {
   const data = location.state.movie;
 
   return (
-    <div className="detail_container">
-      <div className="detail container">
+    <div className="detail_container ">
+      <div className="detail-image">
+        <Pin pageData={data} />
         <img
           src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
           alt={data.name || data.original_title}
         />
+      </div>
+
+      <div className=" detail-card ">
         <h1>{data.name || data.original_title}</h1>
         <p className="overview">{data.overview}</p>
         <p className="revenue">Revenue : ${data.revenue}</p>
-        <Pin pageData={data} type={location.state.movie} />
       </div>
     </div>
   );
