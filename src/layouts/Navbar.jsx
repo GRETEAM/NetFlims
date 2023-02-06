@@ -80,11 +80,9 @@ const Navbar = ({ setSessionStatus }) => {
         <ul>
           <li>
             <button onClick={() => setCartIsOpen(!cartIsOpen)}>
-              <img
-                src={`https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user?.avatar_url}`}
-                alt="No pfp"
-                className="navbar-profil"
-              />
+              {console.log(user?.avatar_url)}
+        <img src={`https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user.id}/${user?.avatar_url}`} alt="No pfp" className="navbar-profil" />
+
             </button>
           </li>
           <li style={{position:"relative"}}>
