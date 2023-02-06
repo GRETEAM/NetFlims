@@ -72,8 +72,8 @@ export default function Avatar({ url, size, onUpload }) {
         "Uploading..."
       ) : (
         <>
-          <label className="profile-infos-form-button" htmlFor="single">
-            Update the avatar
+          <label className="profile-infos-form-button button-white" htmlFor="single">
+            Modify your avatar
           </label>
           <div className="upload-file">
             <input

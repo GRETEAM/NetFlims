@@ -39,21 +39,19 @@ const Profile = () => {
   return (
     <main className="container">
       <section className="profile">
-        <div className="profile-infos">
-          <h1 className="title">Profil de {username}</h1>
-        <div className="profile-infos-form">
-          <form>
-            <input
-              type="text"
-              placeholder={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <button className="profile-infos-form-button" onClick={handleSubmit}>
-              Update username
-            </button>
-          </form>
-        </div>
-        </div>
+        <div className="profile-container">
+          <div className="profile-infos">
+            <h1 className="title">Profil of {username}</h1>
+            <div className="profile-infos-form">
+              <form>
+                <input
+                  type="text"
+                  placeholder={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </form>
+            </div>
+          </div>
           <Avatar
             url={avatar_url}
             size={150}
@@ -62,6 +60,10 @@ const Profile = () => {
               handleSubmit({ username, website, avatar_url: url });
             }}
           />
+        </div>
+        <button className="profile-infos-form-button button-red" onClick={handleSubmit}>
+          Update the profil
+        </button>
       </section>
     </main>
   );
