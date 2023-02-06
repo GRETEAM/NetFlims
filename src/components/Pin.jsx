@@ -4,7 +4,7 @@ import { supabase } from "../supabaseClient";
 
 const Pin = ({ pageData, type }) => {
   const user = useSelector((store) => store.reducerUser);
-  console.log(user.bookmarks);
+  // console.log(user.bookmarks);
   const dispatch = useDispatch();
 
   const [bookmarks, setBookmarks] = useState(false);
@@ -23,7 +23,7 @@ const Pin = ({ pageData, type }) => {
   }, [user.bookmarks,[]]);
 
   const handleSubmit = async (e) => {
-    console.log(user.bookmarks);
+    // console.log(user.bookmarks);
     const tmp = user.bookmarks != null ? [...user.bookmarks] : [];
     if (e == "del") {
       const deleted = tmp.filter((item) => {
