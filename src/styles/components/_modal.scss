@@ -1,0 +1,19 @@
+@use "../base/mixins" as *;
+
+.container-modal {
+  position: absolute;
+  background-color: var(--bg-dark-nav);
+  color:white;
+  padding: 1rem;
+  right: 4px;
+  :not(:last-child) {
+    margin-bottom : 1rem;
+  }
+}
+
+.modal{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
