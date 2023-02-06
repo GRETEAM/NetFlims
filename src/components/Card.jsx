@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import movies from "../assets/icons/icon-movies.svg";
 import series from "../assets/icons/icon-series.svg";
-import BookMarkedOrNot from "./BookMarkedOrNot";
 
 const Card = ({ data }) => {
     

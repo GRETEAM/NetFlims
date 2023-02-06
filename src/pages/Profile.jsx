@@ -57,7 +57,6 @@ const Profile = () => {
             size={150}
             onUpload={(url) => {
               setAvatarUrl(url);
-              handleSubmit({ username, website, avatar_url: url });
             }}
           />
         </div>
