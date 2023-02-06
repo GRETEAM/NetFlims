@@ -5,6 +5,7 @@ import movies from "../assets/icons/icon-movies.svg";
 import series from "../assets/icons/icon-series.svg";
 import Pin from "./Pin";
 
+
 const Card = ({ data }) => {
     
   return (
