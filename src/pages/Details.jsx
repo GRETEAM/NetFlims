@@ -21,6 +21,7 @@ const Details = () => {
       <div className=" detail-card ">
         <h1>{data.name || data.original_title}</h1>
         <p className="overview">{data.overview}</p>
+        <p>Vote: {data.vote_average}</p>
         <p className="revenue">Revenue : ${data.revenue}</p>
       </div>
     </div>
