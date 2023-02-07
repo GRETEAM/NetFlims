@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import Avatar from "../components/Avatar";
 
 const Profile = () => {
@@ -9,7 +10,6 @@ const Profile = () => {
   const [website, setWebsite] = useState();
   const [avatar_url, setAvatarUrl] = useState();
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setUsername(user.username);
@@ -22,7 +22,6 @@ const Profile = () => {
   );
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
     const { data, error } = await supabase
       .from("profiles")
@@ -60,7 +59,20 @@ const Profile = () => {
             }}
           />
         </div>
-        <button className="profile-infos-form-button button-red" onClick={handleSubmit}>
+        <button
+          className="profile-infos-form-button button-red"
+          onClick={() => {
+            handleSubmit();
+            toast("Profil updated", {
+              icon: "✅",
+              autoClose: 2000,
+              hideProgressBar: true,
+              pauseOnHover: false,
+              theme: "dark",
+              role: "alert",
+            });
+          }}
+        >
           Update the profil
         </button>
       </section>
