@@ -48,7 +48,7 @@ const Navbar = ({ setSessionStatus }) => {
   }, []);
 
   return (
-    <section className="navbar">
+    <section className="navbar" onMouseLeave={() => {setCartIsOpen(false)}}>
       <nav className="navbar-container nav-container">
         <img src={logo} alt="" className="navbar-logo" />
         <div className="navbar-links">
@@ -79,10 +79,12 @@ const Navbar = ({ setSessionStatus }) => {
         </div>
         <ul>
           <li>
-            <button onClick={() => setCartIsOpen(!cartIsOpen)}>
+            <button
+            onClick={() => setCartIsOpen(!cartIsOpen)}
+            onMouseEnter={() => setCartIsOpen(true)}
+            >
               {console.log(user?.avatar_url)}
         <img src={`https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user.id}/${user?.avatar_url}`} alt="No pfp" className="navbar-profil" />
-
             </button>
           </li>
           <li style={{position:"relative"}}>
