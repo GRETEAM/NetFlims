@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 
+
 export default function Auth({ setSessionStatus }) {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
