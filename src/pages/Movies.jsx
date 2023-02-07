@@ -11,10 +11,11 @@ const Movies = () => {
 
   const [pageIndex, setPageIndex] = useState(1);
   // let pageIndex = 1;
-  
-  useEffect(() => {    
+
+  useEffect(() => {
     const infiniteCheck = () => {
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
 
       if (scrollHeight - scrollTop === clientHeight) {
         setPageIndex((pageIndex) => pageIndex + 1);
@@ -24,7 +25,7 @@ const Movies = () => {
         // dispatch(fetchScroll(pageIndex));
       }
     };
-    
+
     window.addEventListener("scroll", infiniteCheck);
     return () => {
       window.removeEventListener("scroll", infiniteCheck);
@@ -39,7 +40,6 @@ const Movies = () => {
     <main className="container">
       <h1 className="title">Movies</h1>
       <div className="card-container">
-        
         {movies.length == 0 || undefined ? (
           <Loader />
         ) : (
