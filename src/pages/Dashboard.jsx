@@ -40,15 +40,13 @@ const Dashboard = () => {
 
   return (
     <main className="container">
-    
       <SearchBar filter={filter} placeholder="Search for movies or TV series" />
-      
+
       <section className="trending">
         <h1 className="title">Trending</h1>
       </section>
-      
+
       <TrendingMovies loading={loading} movies={dataMovies} />
-      
     </main>
   );
 };

@@ -14,6 +14,7 @@
 @use "./components/card";
 @use "./components/auth";
 @use "./components/modal";
+@use "./components/toastifyAlert";
 
 // == PAGES == //
 @use "./pages/dashboard";
