@@ -19,6 +19,9 @@ const Bookmark = () => {
 
   return (
     <div className="container">
+      <section className="trending">
+        <h1 className="title">Bookmarks</h1>
+      </section>
       <section className="recommend">
         <Swiper
           rewind={true}
