@@ -16,8 +16,7 @@ const Navbar = ({ setSessionStatus }) => {
   const user = useSelector((store) => store.reducerUser);
 
   const activeStyle = {
-    filter:
-      "invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg) brightness(166%) contrast(100%)",
+    filter: "var(--active-nav)",
   };
   const dispatch = useDispatch();
 

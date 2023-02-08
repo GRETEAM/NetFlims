@@ -36,6 +36,10 @@
       font-weight: 300;
     }
 
+    &-image {
+      filter: var(--image-color);
+    }
+
     &-title {
       font-size: 1.4rem;
       line-height: 1.8rem;

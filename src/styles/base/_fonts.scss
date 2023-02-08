@@ -5,21 +5,27 @@
   --bg-dark: #10141e;
   --bg-dark-nav: #161d2f;
   --text-light: #ffffff;
-  --toastify-color-dark: #161d2f;
   --shadow-none: none;
+  --nav-active-dark: invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg)
+    brightness(166%) contrast(100%);
 
   // Light color
-  --bg-light: #f5f5f5;
-  --bg-light-nav: #e0e0e0;
+  --bg-white: #ffffff;
+  --bg-light-nav: #f5f5f5;
   --text-dark: #10141e;
-  --toastify-color-light: #e0e0e0;
+  --trending-title: #ffffff;
   --box-shadow: 0px 16px 30px -10px #4660bb33;
+  --nav-active-light: invert(0%) sepia(100%) saturate(750%) hue-rotate(100deg)
+    brightness(0%) contrast(111%);
 
   // Basic styles
   --background: var(--bg-dark);
   --background-nav: var(--bg-dark-nav);
   --color: var(--text-light);
-  --background-toastify: var(--toastify-color-dark);
+  --circle: var(--text-light);
+  --image-color: var(--nav-active-dark);
+  // --background-toastify: var(--toastify-color-dark);
+  // --active-nav: var(--nav-active-dark);
 }
 
 .title {
@@ -44,8 +50,10 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 19px;
+  color: var(--trending-title);
 
   &-infos {
+    color: var(--trending-title);
     font-weight: 300;
     font-size: 1.2rem;
     line-height: 1.5rem;

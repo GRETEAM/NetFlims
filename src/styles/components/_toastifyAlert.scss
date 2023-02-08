@@ -9,6 +9,8 @@
 
 .Toastify__toast {
   border-radius: 8px;
+  background-color: var(--background-nav);
+  color: var(--color);
 }
 
 .Toastify__toast-container {
@@ -16,7 +18,7 @@
   left: auto;
   right: 0;
   width: 22rem;
-  color: #fff;
+  color: var(--color);
   font-size: 1.4rem;
   line-height: 1.2rem;
   letter-spacing: 0.1rem;

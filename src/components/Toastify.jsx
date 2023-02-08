@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 const Toastify = () => {
   return (
       <div className="container">
-        <ToastContainer autoClose={2000} hideProgressBar theme="dark" pauseOnHover role="alert" />
+        <ToastContainer autoClose={2000} hideProgressBar pauseOnHover role="alert" />
       </div>
   )
 };

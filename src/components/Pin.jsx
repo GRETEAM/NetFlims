@@ -59,7 +59,6 @@ const Pin = ({ pageData }) => {
             autoClose: 2000,
             hideProgressBar: true,
             pauseOnHover: false,
-            theme: "dark",
             role: "alert",
           });
         }}

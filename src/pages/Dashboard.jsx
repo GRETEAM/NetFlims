@@ -47,6 +47,8 @@ const Dashboard = () => {
       </section>
 
       <TrendingMovies loading={loading} movies={dataMovies} />
+
+      
     </main>
   );
 };
