@@ -28,3 +28,16 @@
   border-radius: 50%;
   background-color: #ffffff;
 }
+
+.light {
+  --background: var(--bg-light);
+  --background-nav: var(--bg-light-nav);
+  --color: var(--text-dark);
+  --background-toastify: var(--toastify-color-light);
+}
+
+//  --bg-light: #f5f5f5;
+// --bg-light-nav: #e0e0e0;
+// --text-dark: #10141e;
+// --toastify-color-light: #e0e0e0;
+// --box-shadow: 0px 16px 30px -10px #4660bb33;

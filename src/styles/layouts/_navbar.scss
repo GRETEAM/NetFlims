@@ -7,7 +7,7 @@
 
   &-container {
     padding: 1.6rem;
-    background-color: var(--bg-dark-nav);
+    background-color: var(--background-nav);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -31,6 +31,5 @@
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 50%;
-
   }
 }
