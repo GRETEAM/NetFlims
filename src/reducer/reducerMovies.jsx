@@ -20,8 +20,6 @@ export const reducerMovies = (state = initialState, action) => {
         }
       });
       return cloneState;
-    case "FECTH_ALL_TYPES":
-      return action.movies;
     default:
       return state;
   }

@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import Pin from "../components/Pin";
 import useFetch from "../hooks/useFetch";
@@ -7,7 +5,7 @@ import useFetch from "../hooks/useFetch";
 const Details = () => {
   const location = useLocation();
   const data = location.state.movie;
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="detail_container ">
@@ -19,7 +17,7 @@ const Details = () => {
         />
       </div>
 
-      <div className=" detail-card ">
+      <div className="detail-card">
         <h1>{data.name || data.original_title}</h1>
         <p className="overview">{data.overview}</p>
         <p>Vote: {data.vote_average}</p>
