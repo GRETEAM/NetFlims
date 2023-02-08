@@ -10,7 +10,6 @@ const Movies = () => {
   const dispatch = useDispatch();
 
   const [pageIndex, setPageIndex] = useState(1);
-  // let pageIndex = 1;
 
   useEffect(() => {
     const infiniteCheck = () => {
@@ -21,8 +20,6 @@ const Movies = () => {
         setPageIndex((pageIndex) => pageIndex + 1);
         console.log(pageIndex);
         dispatch(fetchScroll(pageIndex + 1));
-        // Celui en dessous fonctionne aussi
-        // dispatch(fetchScroll(pageIndex));
       }
     };
 
