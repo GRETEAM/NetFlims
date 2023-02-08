@@ -8,7 +8,7 @@ export const reducerMovies = (state = initialState, action) => {
     case "INIT_MOVIES":
       return action.movies;
     case "FETCH_MOVIE_SCROLL":
-        // To track all id's that already exist to compare them with the new id's in the action.movies array
+      // To track all id's that already exist to compare them with the new id's in the action.movies array
       let ids = [];
       for (let movie of cloneState) {
         ids.push(movie.id);
@@ -20,6 +20,8 @@ export const reducerMovies = (state = initialState, action) => {
         }
       });
       return cloneState;
+    case "FECTH_ALL_TYPES":
+      return action.movies;
     default:
       return state;
   }

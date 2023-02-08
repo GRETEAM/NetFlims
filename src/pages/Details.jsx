@@ -7,6 +7,7 @@ import useFetch from "../hooks/useFetch";
 const Details = () => {
   const location = useLocation();
   const data = location.state.movie;
+  console.log(data);
 
   return (
     <div className="detail_container ">

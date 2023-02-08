@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initMovies } from "../actions/initMovies";
+import AllTypesMovies from "../components/AllTypesMovies";
 import SearchBar from "../components/SearchBar";
 import TrendingMovies from "../components/TrendingMovies";
 import useFetch from "../hooks/useFetch";
@@ -47,6 +48,8 @@ const Dashboard = () => {
       </section>
 
       <TrendingMovies loading={loading} movies={dataMovies} />
+
+      <AllTypesMovies />
     </main>
   );
 };
