@@ -17,7 +17,7 @@ const AllTypesMovies = () => {
   return (
     <section>
       <h2 className="title">Recommand</h2>
-      {/* <div className="card-container">
+      <div className="card-container">
         {allTypes.length == 0 || undefined ? (
           <Loader />
         ) : (
@@ -25,7 +25,7 @@ const AllTypesMovies = () => {
             return <Card data={type} key={type.id} />;
           })
         )}
-      </div> */}
+      </div>
     </section>
   );
 }
