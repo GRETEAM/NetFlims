@@ -22,7 +22,6 @@ const Movies = () => {
 
       if (scrollHeight - scrollTop === clientHeight) {
         setPageIndex((pageIndex) => pageIndex + 1);
-        console.log(pageIndex);
         dispatch(fetchScroll(pageIndex + 1));
       }
     };

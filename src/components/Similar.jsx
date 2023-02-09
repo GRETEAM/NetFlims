@@ -7,7 +7,6 @@ import Loader from "./Loader";
 const Similar = ({movie_id, media_type}) => {
   const movies = useSelector((store) => store.reducerSimilar);
   const dispatch = useDispatch();
-  console.log(movies);
 
   useEffect(() => {
     dispatch(fetchSimilar(movie_id, media_type));

@@ -26,7 +26,7 @@ export default function Avatar({ url, size, onUpload }) {
         throw error
       }
       const url = URL.createObjectURL(data)
-      console.log(url);
+      // console.log(url);
       setAvatarUrl(url)
     } catch (error) {
       console.log('Error downloading image: ', error.message)
@@ -45,7 +45,7 @@ export default function Avatar({ url, size, onUpload }) {
       const fileExt = file.name.split('.').pop()
       const fileName = `${Math.random()}.${fileExt}`
       const filePath = `${fileName}`
-      console.log(filePath, file)
+      // console.log(filePath, file)
       let { error: uploadError } = await supabase.storage.from('avatars').upload(user.id + "/" + filePath, file)
 
       if (uploadError) {

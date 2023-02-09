@@ -16,8 +16,7 @@ const Navbar = ({ setSessionStatus }) => {
   const user = useSelector((store) => store.reducerUser);
 
   const activeStyle = {
-    filter:
-      "invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg) brightness(166%) contrast(100%)",
+    filter: "invert(80%) sepia(100%) saturate(100%) hue-rotate(155deg) brightness(166%) contrast(100%)",
   };
   const dispatch = useDispatch();
 
@@ -79,12 +78,8 @@ const Navbar = ({ setSessionStatus }) => {
         </div>
         <ul>
           <li>
-            <button
-            onClick={() => setCartIsOpen(!cartIsOpen)}
-            onMouseEnter={() => setCartIsOpen(true)}
-            >
-              {console.log(user?.avatar_url)}
-        <img src={`https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user.id}/${user?.avatar_url}`} alt="No pfp" className="navbar-profil" />
+            <button onClick={() => setCartIsOpen(!cartIsOpen)} onMouseEnter={() => setCartIsOpen(true)}>
+              <img src={`https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user.id}/${user?.avatar_url}`} alt="No pfp" className="navbar-profil" />
             </button>
           </li>
           <li style={{position:"relative"}}>

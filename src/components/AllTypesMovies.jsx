@@ -4,7 +4,6 @@ import { fetchAllTypes } from "../actions/actionsAllTypes";
 import Card from "./Card";
 import Loader from "./Loader";
 
-
 const AllTypesMovies = () => {
   const allTypes = useSelector((store) => store.reducerAllTypes);
   const dispatch = useDispatch();
@@ -13,7 +12,6 @@ const AllTypesMovies = () => {
     dispatch(fetchAllTypes());
   }, []);
   
-  console.log(allTypes);
   return (
     <section className="types">
       <h2 className="title">Recommand</h2>
@@ -28,6 +26,6 @@ const AllTypesMovies = () => {
       </div>
     </section>
   );
-}
+};
  
 export default AllTypesMovies;

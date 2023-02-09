@@ -5,7 +5,6 @@ export const fetchSimilar = (movie_id,media_type) => {
       );
       const responseData = await response.json();
       let movies = responseData.results;
-      console.log(movies);
       dispatch({ type: "FETCH_MOVIE_SIMILAR", movies });
     };
   };
