@@ -3,22 +3,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 import movies from "../assets/icons/icon-movies.svg";
 import series from "../assets/icons/icon-series.svg";
+import NotAvailble from "../assets/no-image-available-icon-6.png";
 import Pin from "./Pin";
-
 
 const Card = ({ data }) => {
     
   return (
     <div className="card">
       <Link to={`/${data.id}`} state={{ movie: data }}>
-        <img
-          className="card-img"
-          src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
-          alt={data.title || data.name}
-        />
-        </Link>
-        {/* <BookMarkedOrNot /> */}
-        <Link to={`/${data.id}`} state={{ movie: data }}>
+        {data.backdrop_path === null ? (
+          <img
+            className="card-img"
+            src={NotAvailble}
+            alt={data.name || data.original_title}
+          />
+        ) : (
+          <img
+            className="card-img"
+            src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
+            alt={data.name || data.original_title}
+          />
+        )}
+      </Link>
+      {/* <BookMarkedOrNot /> */}
+      <Link to={`/${data.id}`} state={{ movie: data }}>
         <div className="card-description">
           <p className="card-description-date">
             {moment(data.release_date).format("YYYY")}
@@ -43,7 +51,7 @@ const Card = ({ data }) => {
           {data.original_title || data.name}
         </h2>
       </Link>
-      <Pin pageData={data}/>
+      <Pin pageData={data} />
     </div>
   );
 };
