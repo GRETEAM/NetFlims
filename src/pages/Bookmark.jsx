@@ -15,8 +15,6 @@ const Bookmark = () => {
   useEffect(() => {
     setBookmarks(user.bookmarks);
   }, [user, []]);
-  console.log(bookmarks);
-
   return (
     <div className="container">
       <section className="trending">
