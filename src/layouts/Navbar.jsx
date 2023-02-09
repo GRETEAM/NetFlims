@@ -47,7 +47,12 @@ const Navbar = ({ setSessionStatus }) => {
   }, []);
 
   return (
-    <section className="navbar" onMouseLeave={() => {setCartIsOpen(false)}}>
+    <section
+      className="navbar"
+      onMouseLeave={() => {
+        setCartIsOpen(false);
+      }}
+    >
       <nav className="navbar-container nav-container">
         <img src={logo} alt="" className="navbar-logo" />
         <div className="navbar-links">
@@ -78,12 +83,25 @@ const Navbar = ({ setSessionStatus }) => {
         </div>
         <ul>
           <li>
-            <button onClick={() => setCartIsOpen(!cartIsOpen)} onMouseEnter={() => setCartIsOpen(true)}>
-              <img src={`https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user.id}/${user?.avatar_url}`} alt="No pfp" className="navbar-profil" />
+            <button
+              onClick={() => setCartIsOpen(!cartIsOpen)}
+              onMouseEnter={() => setCartIsOpen(true)}
+            >
+              <img
+                src={
+                  user.avatar_url
+                    ? `https://tkegivgfbmgphxcmaomd.supabase.co/storage/v1/object/public/avatars/${user.id}/${user?.avatar_url}`
+                    : "https://img-19.commentcamarche.net/AINHgQU6hzAaA-eacqk4lYu9IhE=/1500x/smart/d8c10e7fd21a485c909a5b4c5d99e611/ccmcms-commentcamarche/20456790.jpg"
+                }
+                alt="No pfp"
+                className="navbar-profil"
+              />
             </button>
           </li>
-          <li style={{position:"relative"}}>
-            {cartIsOpen && <Modal setSessionStatus={setSessionStatus} user={user} />}
+          <li style={{ position: "relative" }}>
+            {cartIsOpen && (
+              <Modal setSessionStatus={setSessionStatus} user={user} />
+            )}
           </li>
         </ul>
       </nav>

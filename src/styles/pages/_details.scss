@@ -46,8 +46,11 @@
       font-weight: 300;
     }
 
-    .vote {
-      margin-top: 2rem;
+    &-info {
+      margin: 2rem 0 4rem 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
     }
 
     .revenue {

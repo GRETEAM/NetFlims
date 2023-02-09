@@ -16,6 +16,9 @@ const Bookmark = () => {
   useEffect(() => {
     setBookmarks(user.bookmarks);
   }, [user, []]);
+
+  console.log(bookmarks);
+  
   return (
     <div className="container">
       <section className="trending">
@@ -23,12 +26,12 @@ const Bookmark = () => {
       </section>
       <section className="recommend">
         <div className="card-container">
-          {bookmarks.length === 0 ? (
-              <p className="empty">You don't have bookmark !</p>
-          ) : (
-            bookmarks.map((movie) => {
+          {bookmarks?.length > 0 ? (
+            bookmarks?.map((movie) => {
               return <Card data={movie} key={movie.id} />;
-            })
+          })
+          ) : (
+            <p className="empty">You don't have bookmark !</p>
           )}
         </div>
       </section>

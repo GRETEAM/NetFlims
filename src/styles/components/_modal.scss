@@ -3,15 +3,20 @@
 .container-modal {
   position: absolute;
   background-color: var(--bg-dark-nav);
-  color:white;
-  padding: 1rem;
-  right: 4px;
+  color: white;
+  padding: 1.5rem;
+  right: 0;
+  top: 1.2rem;
+  z-index: 2;
+  border-radius: 0 0 8px 8px;
+  font-size: 1.2rem;
+
   :not(:last-child) {
-    margin-bottom : 1rem;
+    margin-bottom: 2rem;
   }
 }
 
-.modal{
+.modal {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
