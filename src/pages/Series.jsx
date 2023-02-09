@@ -33,6 +33,10 @@ const Series = () => {
     dispatch(initMovies());
   }, []);
 
+  const loadMoreData = () => {
+    dispatch(fetchScroll(pageIndex + 1));
+  };
+
   return (
     <main className="container">
       <h1 className="title">Series</h1>
@@ -42,11 +46,11 @@ const Series = () => {
         ) : (
           series.map((serie) => {
             if (serie.media_type === "tv") {
-              return <Card data={serie}  key={serie.id}  />;
+              return <Card data={serie} key={serie.id} />;
             }
           })
         )}
-        <SeriesList/>
+        <SeriesList />
       </div>
     </main>
   );

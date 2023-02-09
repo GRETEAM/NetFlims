@@ -28,3 +28,14 @@
   border-radius: 50%;
   background-color: #ffffff;
 }
+
+// Button to load more movies if the scroll is not possible
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
+  font-size: 1.2rem;
+  button {
+    border-bottom: 1px solid #fff;
+  }
+}

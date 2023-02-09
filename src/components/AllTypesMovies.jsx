@@ -15,7 +15,7 @@ const AllTypesMovies = () => {
   
   console.log(allTypes);
   return (
-    <section>
+    <section className="types">
       <h2 className="title">Recommand</h2>
       <div className="card-container">
         {allTypes.length == 0 || undefined ? (
