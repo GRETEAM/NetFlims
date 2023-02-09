@@ -1,16 +1,17 @@
+import { useState } from "react";
 import { Provider, useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Auth from "./components/Auth";
 import Navbar from "./layouts/Navbar";
 import Bookmark from "./pages/Bookmark";
 import Dashboard from "./pages/Dashboard";
 import Details from "./pages/Details";
 import Movies from "./pages/Movies";
 import Person from "./pages/Person";
-import Series from "./pages/Series";
-import store from "./Store";
-import { useState } from "react";
 import Profile from "./pages/Profile";
-import Auth from "./components/Auth";
+import Series from "./pages/Series";
+import { ScrollToTop } from "./ScrollToTop";
+import store from "./Store";
 
 const App = () => {
   const [sessionStatus, setSessionStatus] = useState();
@@ -25,6 +26,7 @@ const App = () => {
       ) : (
         <Provider store={store}>
           <BrowserRouter>
+            <ScrollToTop />
             <Navbar setSessionStatus={setSessionStatus} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
