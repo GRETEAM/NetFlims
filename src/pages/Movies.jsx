@@ -11,6 +11,10 @@ const Movies = () => {
 
   const [pageIndex, setPageIndex] = useState(1);
 
+    const loadMoreData = () => {
+      dispatch(fetchScroll(pageIndex + 1));
+    };
+
   useEffect(() => {
     const infiniteCheck = () => {
       const { scrollTop, scrollHeight, clientHeight } =
@@ -46,6 +50,9 @@ const Movies = () => {
             }
           })
         )}
+      </div>
+      <div className="load-more">
+        <button onClick={loadMoreData}>Load More...</button>
       </div>
     </main>
   );
