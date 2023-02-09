@@ -51,6 +51,10 @@
           margin: 4rem 0 7.5rem 0;
         }
 
+        @include mq(tablet) {
+          margin: 0 0 7.5rem 0;
+        }
+
         &::placeholder {
           opacity: 0.5;
         }
