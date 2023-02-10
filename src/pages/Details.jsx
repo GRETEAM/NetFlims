@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import NotAvailble from "../assets/no-image-available-icon-6.png";
 import Pin from "../components/Pin";
 import Similar from "../components/Similar";
+import NotFound from "./NotFound";
 
 const Details = () => {
   const location = useLocation();
@@ -41,7 +42,7 @@ const Details = () => {
         </main>
       ) :
       (
-        <p>Woops wrong page</p>
+        <NotFound />
       )}
     </>
   );
