@@ -6,37 +6,44 @@ import Similar from "../components/Similar";
 
 const Details = () => {
   const location = useLocation();
-  const data = location.state.movie;
+  const data = location?.state?.movie;
 
-  console.log(location);
-  console.log('test');
-  
   return (
-    <main className="container">
-      <div className="detail_container ">
-        <div className="detail-image">
-          <Pin pageData={data} />
-          {data.backdrop_path === null ? (
-            <img src={NotAvailble} alt={data.name || data.original_title} />
-          ) : (
-            <img
-              src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
-              alt={data.name || data.original_title}
-            />
-          )}
-        </div>
+    <>
+      {data != null ? (
+        <main className="container">
+          <div className="detail_container ">
+            <div className="detail-image">
+              <Pin pageData={data} />
+              {data.backdrop_path === null ? (
+                <img src={NotAvailble} alt={data.name || data.original_title} />
+              ) : (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}
+                  alt={data.name || data.original_title}
+                />
+              )}
+            </div>
 
-        <div className="detail-card">
-          <h1>{data.name || data.original_title}</h1>
-          <p className="overview">{data.overview}</p>
-          <div className="detail-card-info">
-            <p>Release Date : {moment(data.release_date).format("MMMM Do YYYY")}</p>
-            <p className="vote">Vote: {data.vote_average} / 10</p>
+            <div className="detail-card">
+              <h1>{data.name || data.original_title}</h1>
+              <p className="overview">{data.overview}</p>
+              <div className="detail-card-info">
+                <p>
+                  Release Date :{" "}
+                  {moment(data.release_date).format("MMMM Do YYYY")}
+                </p>
+                <p className="vote">Vote: {data.vote_average} / 10</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <Similar media_type={data.media_type} movie_id={data.id} />
-    </main>
+          <Similar media_type={data.media_type} movie_id={data.id} />
+        </main>
+      ) :
+      (
+        <p>Woops wrong page</p>
+      )}
+    </>
   );
 };
 

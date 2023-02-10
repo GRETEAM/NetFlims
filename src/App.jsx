@@ -31,12 +31,12 @@ const App = () => {
             <Navbar setSessionStatus={setSessionStatus} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/movies" element={<Movies />}>
-                <Route path=":detail" element={<Details />} />
-              </Route>
-              <Route path="/series" element={<Series />}>
-                <Route path=":detail" element={<Details />} />
-              </Route>
+              <Route path="/movies" element={<Movies />} />
+              <Route path=":detail" element={<Details />} />
+
+              <Route path="/series" element={<Series />} />
+              <Route path=":detail" element={<Details />} />
+
               <Route path="/bookmark" element={<Bookmark />} />
               <Route path="/person" element={<Person />} />
               <Route path="/profile" element={<Profile />} />
