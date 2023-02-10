@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-
-const SearchBar = ({filter,placeholder}) => {
+const SearchBar = ({ filter , placeholder }) => {
     
   return (
     <div className='search_container'>
@@ -8,6 +6,6 @@ const SearchBar = ({filter,placeholder}) => {
         <input type="text" className='searchbar_input' onChange={(e) => filter(e)} placeholder={placeholder} />
     </div>
   )
-}
+};
 
-export default SearchBar
+export default SearchBar;

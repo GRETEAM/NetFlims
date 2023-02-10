@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import NotAvailble from "../assets/no-image-available-icon-6.png";
 import Pin from "../components/Pin";
 import Similar from "../components/Similar";
@@ -7,6 +7,9 @@ import Similar from "../components/Similar";
 const Details = () => {
   const location = useLocation();
   const data = location.state.movie;
+
+  console.log(location);
+  console.log('test');
   
   return (
     <main className="container">

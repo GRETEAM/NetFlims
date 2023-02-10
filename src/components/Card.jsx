@@ -10,7 +10,7 @@ const Card = ({ data }) => {
     
   return (
     <div className="card">
-      <Link to={`/${data.id}`} state={{ movie: data }}>
+      <Link to={`${data.id}`} state={{ movie: data }}>
         {data.backdrop_path === null ? (
           <img
             className="card-img"
@@ -26,7 +26,7 @@ const Card = ({ data }) => {
         )}
       </Link>
       {/* <BookMarkedOrNot /> */}
-      <Link to={`/${data.id}`} state={{ movie: data }}>
+      <Link to={`${data.id}`} state={{ movie: data }}>
         <div className="card-description">
           <p className="card-description-date">
             {moment(data.release_date).format("YYYY")}

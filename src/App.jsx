@@ -7,6 +7,7 @@ import Bookmark from "./pages/Bookmark";
 import Dashboard from "./pages/Dashboard";
 import Details from "./pages/Details";
 import Movies from "./pages/Movies";
+import NotFound from "./pages/NotFound";
 import Person from "./pages/Person";
 import Profile from "./pages/Profile";
 import Series from "./pages/Series";
@@ -30,12 +31,16 @@ const App = () => {
             <Navbar setSessionStatus={setSessionStatus} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/movies" element={<Movies />} />
-              <Route path="/series" element={<Series />} />
+              <Route path="/movies" element={<Movies />}>
+                <Route path=":detail" element={<Details />} />
+              </Route>
+              <Route path="/series" element={<Series />}>
+                <Route path=":detail" element={<Details />} />
+              </Route>
               <Route path="/bookmark" element={<Bookmark />} />
               <Route path="/person" element={<Person />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/:detail" element={<Details />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </Provider>
