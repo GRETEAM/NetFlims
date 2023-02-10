@@ -6,7 +6,7 @@ import Avatar from "../components/Avatar";
 
 const Profile = () => {
   const user = useSelector((store) => store.reducerUser);
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const [website, setWebsite] = useState();
   const [avatar_url, setAvatarUrl] = useState();
   const [error, setError] = useState();
@@ -21,17 +21,30 @@ const Profile = () => {
     import.meta.env.VITE_ANON_API_KEY
   );
 
+  console.log(user.id);
   const handleSubmit = async (e) => {
-
     const { data, error } = await supabase
       .from("profiles")
       .update([{ username, website, avatar_url }])
       .eq("id", user.id);
-
-    console.log(error);
     if (error?.code == 23505) {
       setError("This username is already taken");
       alert("Username already taken");
+    } else {
+      // remove all the existing pictures in user bucket
+      const { data, error } = await supabase.storage
+        .from("avatars")
+        .list(user.id);
+      console.log(data);
+      const tmp = data.map((item) => {
+        return user.id + "/" + item.name;
+      });
+      console.log(tmp);
+      {
+        const { data, error } = await supabase.storage
+          .from("avatars")
+          .remove(tmp);
+      }
     }
   };
 
