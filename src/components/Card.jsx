@@ -25,7 +25,6 @@ const Card = ({ data }) => {
           />
         )}
       </Link>
-      {/* <BookMarkedOrNot /> */}
       <Link to={`/${data.id}`} state={{ movie: data }}>
         <div className="card-description">
           <p className="card-description-date">
