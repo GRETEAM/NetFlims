@@ -1,13 +1,19 @@
 import * as emailjs from "@emailjs/browser";
 import { useFormik } from "formik";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import * as Yup from "yup";
 
 const Contact = () => {
-
+  const user = useSelector((store) => store.reducerUser);
+  const [username, setUsername] = useState(user.username);
+  
   const formik = useFormik({
     initialValues: {
+      username: username,
       message: "",
     },
+    enableReinitialize:true,
     validationSchema: Yup.object({
       message: Yup.string().required("Can't be empty."),
     }),
