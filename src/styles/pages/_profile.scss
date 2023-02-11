@@ -109,3 +109,15 @@
   background-color: #fff;
   color: #161d2f;
 }
+
+.profile-link {
+  width: 100%;
+  margin: 6rem 0;
+  display: flex;
+  justify-content: center;
+
+  a {
+    border-bottom: 1px solid #fff;
+    font-size: 1.2rem;
+  }
+}

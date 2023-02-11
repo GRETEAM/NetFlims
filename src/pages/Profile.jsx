@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Avatar from "../components/Avatar";
 
@@ -21,7 +22,7 @@ const Profile = () => {
     import.meta.env.VITE_ANON_API_KEY
   );
 
-  console.log(user.id);
+  // console.log(user.id);
   const handleSubmit = async (e) => {
     const { data, error } = await supabase
       .from("profiles")
@@ -39,7 +40,7 @@ const Profile = () => {
       const tmp = data.map((item) => {
         return user.id + "/" + item.name;
       });
-      console.log(tmp);
+      // console.log(tmp);
       {
         const { data, error } = await supabase.storage
           .from("avatars")
@@ -89,6 +90,10 @@ const Profile = () => {
           Update the profil
         </button>
       </section>
+      
+      <div className="profile-link">
+        <Link to="/contact">If you want to give us a feedback 😉</Link>
+      </div>
     </main>
   );
 };

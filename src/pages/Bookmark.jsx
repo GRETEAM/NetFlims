@@ -17,7 +17,7 @@ const Bookmark = () => {
     setBookmarks(user.bookmarks);
   }, [user, []]);
 
-  console.log(bookmarks);
+  // console.log(bookmarks);
   
   return (
     <div className="container">
