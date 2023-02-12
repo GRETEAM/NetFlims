@@ -42,9 +42,23 @@ const Profile = () => {
       });
       // console.log(tmp);
       {
-        const { data, error } = await supabase.storage
-          .from("avatars")
-          .remove(tmp);
+        //Delete old avatars
+      const { data, error } = await supabase.storage
+      .from("avatars")
+      .list(user.id);
+    let tmp = [];
+
+    data?.map((item) => {
+      if (!`${avatar_url}`.includes(item.name)) {
+        tmp.push(user.id + "/" + item.name);
+      }
+    });
+    {
+      const { data, error } = await supabase.storage
+        .from("avatars")
+        .remove(tmp);
+    }
+    //Delete old avatars
       }
     }
   };
