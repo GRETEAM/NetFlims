@@ -2,6 +2,7 @@ import * as emailjs from "@emailjs/browser";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 
 const Contact = () => {
@@ -57,7 +58,17 @@ const Contact = () => {
             <p className="contact-form-error">{formik.errors.message}</p>
           ) : null}
 
-          <button className="contact-submit" type="submit">Submit</button>
+          <button className="contact-submit" disabled={!(formik.isValid && formik.dirty)}
+         type="submit" onClick={() => {
+            toast("Email sent", {
+              icon: "🛫",
+              autoClose: 2000,
+              hideProgressBar: true,
+              pauseOnHover: false,
+              theme: "dark",
+              role: "alert",
+            });
+          }}>Submit</button>
         </form>
       </section>
     </main>
