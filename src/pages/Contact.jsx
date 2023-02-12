@@ -42,9 +42,8 @@ const Contact = () => {
 
   return (
     <main className="container">
-      <h1>Contact Us !</h1>
-
       <section className="contact">
+        <h1 className="contact-title title">Contact Us !</h1>
         <form className="contact-form" onSubmit={formik.handleSubmit}>
           <label htmlFor="messasge">Your Message</label>
           <textarea
@@ -58,7 +57,7 @@ const Contact = () => {
             <p className="contact-form-error">{formik.errors.message}</p>
           ) : null}
 
-          <button type="submit">Submit</button>
+          <button className="contact-submit" type="submit">Submit</button>
         </form>
       </section>
     </main>
